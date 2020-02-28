@@ -20,7 +20,7 @@ string Checking::Transaction(double amt) {
 	double overdraft;
 	if (feeCost > amt) {
 		std::cout << "There is not enougn money in your account. An overdraft will occur." << endl;
-		overdraft = bal - feeCost
+		overdraft = amt - feeCost
 		amt = 0;
 	}
 	else {
