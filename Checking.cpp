@@ -18,14 +18,14 @@ Checking::~Checking() {
 string Checking::Transaction(double amt) {
 	amt = bal;
 	double overdraft;
-	if (feeCost > bal) {
+	if (feeCost > amt) {
 		std::cout << "There is not enougn money in your account. An overdraft will occur." << endl;
 		overdraft = bal - feeCost
-		bal = 0;
+		amt = 0;
 	}
 	else {
 		std::cout << "Your account has a sufficent balance." << endl;
-		bal = bal - feeCost;
+		amt = amt - feeCost;
 		overdraft = 0;
 	}
 }
