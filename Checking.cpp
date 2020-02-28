@@ -14,18 +14,20 @@ Checking::~Checking() {
 	delete[]feeCost;
 }
 
-/*Code for determining if the account has the money to handle a fee and reducing the balance if so*/
+/*Code foe determining if the account has the money to handle a fee and reducing the balance if so*/
 string Checking::Transaction(double amt) {
 	amt = bal;
 	double overdraft;
+	string checkingOutput
 	if (feeCost > amt) {
 		overdraft = bal - feeCost
 		amt = 0;
-		return "There is not enougn money in your account. An overdraft will occur.";
+		checkingOutput = "There is not enougn money in your account. An overdraft will occur.";
 	}
 	else {
 		amt = amt - feeCost;
 		overdraft = 0;
-		return "Your account has a sufficent balance.";
+		checkingOutput = "Your account has a sufficent balance.";
 	}
+	return checkingOutput;
 }
