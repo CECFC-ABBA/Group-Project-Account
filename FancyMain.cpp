@@ -69,7 +69,15 @@ int main(int argc, char** argv) {
       }
       double bal_change = atoi(bal_change_str.c_str());
       double num = atoi(num_str.c_str());
-      //Handle transaction
+      if (acct == "SAVINGS"){
+        cout << savings[num].Transaction(bal_change) << endl;
+      }
+      else if (acct == "CHECKING"){
+        cout << checking[num].Transaction(bal_change) << endl;
+      }
+      else {
+        cout << heloc[num].Transaction(bal_change) << endl;
+      }
     }
     vector<double> savingsBal, checkingBal, helocBal;
     for (Savings s : savings) {
