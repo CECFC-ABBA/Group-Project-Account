@@ -22,3 +22,4 @@ public:
 	void setFee(double);
 	virtual string Transaction(double);
 } Account;
+//Alexander
