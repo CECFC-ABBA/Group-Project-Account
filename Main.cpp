@@ -34,12 +34,12 @@ int main(int argc, char** argv) {
     } while(cur_line != "");
     for (string transaction : filedata) {
       string acct, bal_change_str;
-      for (int i = 0; i < static_cast<int>(transaction.length())) {
+      for (int i = 0; i < static_cast<int>(transaction.length()); i++) {
         if (transaction[i] != ':') {
           acct.push_back(toupper(transaction[i])); 
         }
         else if (i < static_cast<int>(transaction.length()) - 1) {
-          for (int j = i; j < static_cast<int>(transaction.length()) {
+          for (int j = i; j < static_cast<int>(transaction.length()); j++) {
             bal_change_str.push_back(transaction[j]);
           }
           break;
