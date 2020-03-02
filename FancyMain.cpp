@@ -13,7 +13,8 @@ Febuary 27th 2020*/
 //Acct is either checking, savings, or heloc.
 
 //Main:
-//Gets data from file, then outputs transaction results and final account specs. One account of each type.
+//Gets data from file, then outputs transaction results and final account specs.
+//Number of accounts of each type entered when this is run.
 
 void print(vector<double> list, string str) {
   for (int i = 0; i < static_cast<int>(list.size()); i++) {
