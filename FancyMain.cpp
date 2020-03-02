@@ -2,11 +2,14 @@
 Created by the ABBA team
 Period 3 Computer Science
 Febuary 27th 2020*/
+
 #include "Savings.h"
 #include "HELOC.h"
 #include "Checking.h"
 //#include "Account.h"
 #include <vector>
+
+#ifdef FANCYMAIN
 
 //File specs:
 //Each line is a transaction, format: `acct{acct_num}:bal_change`
@@ -101,3 +104,5 @@ int main(int argc, char** argv) {
     print(helocBal, "heloc");
   }
 }
+                   
+#endif
