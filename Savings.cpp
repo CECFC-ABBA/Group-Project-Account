@@ -6,7 +6,7 @@ Savings Class Implementations
 
 Savings::Savings() {
 	bal = getBal();
-	//months = ??
+	months = 18; //temp
 	interest = getIntr();
 	maxWithdraw = 5; //temp val
 }
@@ -35,7 +35,7 @@ string Savings::Transaction(double amt) {
 		cin >> withdrawl;
 		if (withdrawl > bal) cout << "Insuffient funds. Enter another value or E to exit." << endl;
 		if (!e == 'E' || !e == 'e') con = true;
-	} while (con == false);
+	} while (con == true);
 	bal -= withdrawl;
 	string trans = to_string(bal);
 }
