@@ -8,6 +8,8 @@ Febuary 27th 2020*/
 #include "Account.h"
 #include <vector>
 
+#ifdef MAIN
+
 //File specs:
 //Each line is a transaction, format: `acct:bal_change`
 //Acct is either checking, savings, or heloc.
@@ -69,3 +71,5 @@ int main(int argc, char** argv) {
     cout << "HELOC balance: " << heloc.getBal() << endl;
   }
 }
+
+#endif
