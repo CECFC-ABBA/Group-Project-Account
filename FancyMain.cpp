@@ -12,6 +12,9 @@ Febuary 27th 2020*/
 //Each line is a transaction, format: `acct{acct_num}:bal_change`
 //Acct is either checking, savings, or heloc.
 
+//Main:
+//Gets data from file, then outputs transaction results and final account specs. One account of each type.
+
 void print(vector<double> list, string str) {
   for (int i = 0; i < static_cast<int>(list.size()); i++) {
     cout << "Balance in " << str << " " << i << " : " << list[i] << endl;
@@ -94,4 +97,3 @@ int main(int argc, char** argv) {
     print(helocBal, "heloc");
   }
 }
-//Alexander
