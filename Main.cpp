@@ -12,9 +12,9 @@ Febuary 27th 2020*/
 //Each line is a transaction, format: `acct:bal_change`
 //Acct is either checking, savings, or heloc.
 
+
 //Main:
-//Gets data from file (entered as command line argument), and outputs transaction results and final account specs.
-//Amount of data in file also entered as command line argument.
+//Gets data from file, then outputs transaction results and final account specs. One account of each type.
 
 int main(int argc, char** argv) {
   Checking checking, Savings savings, HELOC heloc;
