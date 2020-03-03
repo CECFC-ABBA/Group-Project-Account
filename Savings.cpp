@@ -28,7 +28,7 @@ void Savings::Print() {
 string Savings::Transaction(double amt) {
 	double withdrawl;
 	bool con = false;
-	char e;
+	char e = ' ';
 	//assuming transaction is only called on if withdrawl is being made
 	do {
 		cout << "How much would you like to withdraw? ";
@@ -38,5 +38,6 @@ string Savings::Transaction(double amt) {
 	} while (con == true);
 	bal -= withdrawl;
 	string trans = to_string(bal);
+	return "";
 }
 //Anela
