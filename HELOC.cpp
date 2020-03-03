@@ -9,6 +9,6 @@ HELOC::~HELOC() {
 }
 
 string HELOC::Transaction(double amt) {
-
+  return "";
 }
 //Brendan
