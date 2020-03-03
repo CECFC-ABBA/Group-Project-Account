@@ -1,6 +1,6 @@
 #pragma once
 #include "Account.h"
-class Checking final : public Account {
+typedef class Checking final : public Account {
 	double intr = 0;
 	double fee = 0;
 	double bal = 0;
@@ -15,6 +15,6 @@ public:
 	double getOverDraft() const {
 		return overDraft;
 	}
-};
+} Checking;
 #define MAIN
 //#define FANCYMAIN
