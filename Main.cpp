@@ -9,6 +9,16 @@ Febuary 27th 2020*/
 #include <vector>
 #include <ostream>
 #include <sstream>
+#include <string>
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+#include <winsock2.h>
+#include <ws2tcpip.h>
+#include <stdlib.h>
+#include <thread>
+#include <stdio.h>
+//DO NOT NEED ALL OF THESE INCLUDES
+//I JUST FORGOT WHICH ONE WE NEED
 
 #ifdef MAIN
 
