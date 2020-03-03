@@ -9,7 +9,7 @@ public:
 	Savings();
 	~Savings();
 	void Print();
-	void Deposit();
+	void Interest();
 	string Transaction(double) final;
-} Savings;
+} Checking;
 //Anela
