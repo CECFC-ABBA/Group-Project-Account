@@ -10,6 +10,7 @@ Febuary 27th 2020*/
 #include <vector>
 #include <ostream>
 #include <sstream>
+#include <fstream>
 
 #ifdef FANCYMAIN
 
