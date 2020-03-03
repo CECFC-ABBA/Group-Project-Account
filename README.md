@@ -29,7 +29,7 @@ Define MAIN or FANCYMAIN in Account.h, but not both. This will determine what ma
 1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-1.00000\Main.cpp(24,30): error C2146: syntax error: missing ';' before identifier 'savings'
 1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-1.00000\Main.cpp(24,30): error C2065: 'savings': undeclared identifier
 1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-1.00000\Main.cpp(24,39): error C2275: 'HELOC': illegal use of this type as an expression
-1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-1.00000\HELOC.h(19): message : see declaration of 'HELOC'
+FIXED: 1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-1.00000\HELOC.h(19): message : see declaration of 'HELOC'
 1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-1.00000\Main.cpp(24,45): error C2146: syntax error: missing ';' before identifier 'heloc'
 1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-1.00000\Main.cpp(24,45): error C2065: 'heloc': undeclared identifier
 1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-1.00000\Main.cpp(34,29): error C2109: subscript requires array or pointer type
