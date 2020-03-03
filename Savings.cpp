@@ -2,7 +2,7 @@
 Savings Class Implementations
 2/28/20*/
 #include "Savings.h"
-#include "string.h"
+#include <string>
 
 Savings::Savings() {
 	bal = getBal();
