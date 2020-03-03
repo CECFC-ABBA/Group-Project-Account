@@ -3,7 +3,7 @@
 #include <string>
 
 /*Constructor for Checking*/
-Checking::Checking(intrest, feeCost) {
+Checking::Checking() {
 	double intr1 = intrest;
 	double fee1 = feeCost;
 	double bal1 = balance;
