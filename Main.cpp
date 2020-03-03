@@ -8,6 +8,7 @@ Febuary 27th 2020*/
 //#include "Account.h"
 #include <vector>
 #include <ostream>
+#include <sstream>
 
 #ifdef MAIN
 
