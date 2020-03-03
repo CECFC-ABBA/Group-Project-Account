@@ -1,10 +1,7 @@
 #pragma once
 #include "Account.h"
-typedef class Checking final : public Account {
-	double intr = 0;
-	double fee = 0;
-	double bal = 0;
-	double overDraft;
+typedef class Checking final : public Account {/*Typedef is being ignored by the compiler*/
+	double intr, fee, bal, overDraft;
 public:
 	double intrest = intr;
 	double feeCost = fee;
@@ -15,6 +12,6 @@ public:
 	double getOverDraft() const {
 		return overDraft;
 	}
-} Checking;
+};
 #define MAIN
 //#define FANCYMAIN
