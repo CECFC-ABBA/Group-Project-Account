@@ -45,7 +45,7 @@ public:
 	void setIntr(double);
 	void setFee(double);
 	void setEqu(double);
-	virtual string Transaction(double);
+	string Transaction(double) final;
 
 } HELOC;
 
