@@ -4,6 +4,7 @@ This is a group project for the CECFC class 161. This Repository will have the m
 Define MAIN or FANCYMAIN in Account.h, but not both. This will determine what main function gets used.
 
 # ERRORS
+*Note* - Warning level 5, so not all warnings matter. All errors still do.
 ```1>------ Rebuild All started: Project: grp, Configuration: Debug Win32 ------
 1>Source.cpp
 1>Source1.cpp
