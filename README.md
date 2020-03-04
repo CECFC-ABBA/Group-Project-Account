@@ -13,7 +13,6 @@ Define MAIN or FANCYMAIN in Account.h, but not both. This will determine what ma
 1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-AAA\Savings.cpp(9,20): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 1>Source3.cpp
 1>Source4.cpp
-1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-AAA\Main.cpp(35,29): error C2109: subscript requires array or pointer type
 1>Generating Code...
 1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-AAA\Savings.cpp(50): error C4700: uninitialized local variable 'e' used
 1>Done building project "grp.vcxproj" -- FAILED.
