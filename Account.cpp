@@ -5,7 +5,7 @@ Account::Account() {
 }
 
 Account::~Account() {
- delete[]this 
+ delete[]this;
 }
 
 void Account::setBal(double new_bal) {
