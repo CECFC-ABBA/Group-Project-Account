@@ -14,6 +14,5 @@ Define MAIN or FANCYMAIN in Account.h, but not both. This will determine what ma
 1>Source3.cpp
 1>Source4.cpp
 1>Generating Code...
-1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-AAA\Savings.cpp(50): error C4700: uninitialized local variable 'e' used
 1>Done building project "grp.vcxproj" -- FAILED.
 ========== Rebuild All: 0 succeeded, 1 failed, 0 skipped ==========
