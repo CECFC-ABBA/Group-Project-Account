@@ -12,8 +12,6 @@ Febuary 27th 2020*/
 #include <sstream>
 #include <fstream>
 
-#ifdef FANCYMAIN
-
 //File specs:
 //Each line is a transaction, format: `acct{acct_num}:bal_change`
 //Acct is either checking, savings, or heloc.
@@ -31,7 +29,16 @@ void print(vector<double> list, string str) {
 //Gets data from file, then outputs transaction results and final account specs.
 //Number of accounts of each type entered when this is run.
 
+#ifdef FANCYMAIN
+
 int main(int argc, char** argv) {
+  
+#else
+
+void altMain(int argc, char** argv) {
+
+#endif
+  
   if (argc > 3) {
     cout << "Too much input..." << endl;
     return 0;
@@ -107,5 +114,3 @@ int main(int argc, char** argv) {
     print(helocBal, "heloc");
   }
 }
-                   
-#endif
