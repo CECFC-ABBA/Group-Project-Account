@@ -6,6 +6,9 @@
  * This is the HELOC class Inherrited from Account. 
  * This will keep track of home equity, the loan(and interest rate), and the fee being payed. 
  * (No fee, Charges, Interest)
+ *	4 March 2020
+ * Messed with removing and adding variables.
+ *
  *
  */
 
@@ -18,7 +21,7 @@
 
 typedef class HELOC final : public Account {
 	double fee = 0;
-	double intr = 0;
+	double intr;
 	double months;
 
 private:
