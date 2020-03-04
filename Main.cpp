@@ -32,7 +32,7 @@ int main(int argc, char** argv) {
     return 0;
   }
   else {
-    string filepath = argc[1];
+    string filepath = argv[1];
     ifstream file;
     file.open(filepath);
     vector<string> filedata;
