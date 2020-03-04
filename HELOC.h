@@ -31,19 +31,6 @@ public:
 		return equ;
 
 	}
-
-	double getIntr() const {
-		return intr;
-
-	}
-
-	double getFee() const {
-		return fee;
-
-	}
-
-	void setIntr(double);
-	void setFee(double);
 	void setEqu(double);
 	string Transaction(double) final;
 
