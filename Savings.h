@@ -11,5 +11,5 @@ public:
 	void Print();
 	void Interest();
 	string Transaction(double) final;
-} Checking;
+} Savings;
 //Anela
