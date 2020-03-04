@@ -34,7 +34,7 @@ void Savings::Interest() {
 string Savings::Transaction(double amt) {
 	double withdrawl = 0, tbal;
 	bool con = false;
-	char e;
+	char e = 'a';
 	int choice, w = 0, fee = 75;
 	Print();
 	Interest();
