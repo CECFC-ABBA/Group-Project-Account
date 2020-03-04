@@ -22,7 +22,7 @@ string Checking::Transaction(double amt) {
 	double overdraft, excess, overdraftCost = 35.00;
 	string checkingOutput;
 	if (fee > amt) {
-		excess = bal1 - fee;
+		excess = balance - fee;
 		amt = 0;
 		checkingOutput = "There is not enougn money in your account. An overdraft will occur.";
 		overdraft = excess + overdraftCost;
