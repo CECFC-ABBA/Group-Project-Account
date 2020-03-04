@@ -20,7 +20,9 @@ Febuary 27th 2020*/
 //Gets data from file, then outputs transaction results and final account specs. One account of each type.
 
 int main(int argc, char** argv) {
-  Checking checking, Savings savings, HELOC heloc;
+  Checking checking;
+  Savings savings;
+  HELOC heloc;
   if (argc > 2) {
     cout << "Too much input..." << endl;
     return 0;
