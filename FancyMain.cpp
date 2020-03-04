@@ -35,7 +35,7 @@ int main(int argc, char** argv) {
   
 #else
 
-void altMain(int argc, char** argv) {
+int altMain(int argc, char** argv) {
 
 #endif
   
@@ -113,4 +113,5 @@ void altMain(int argc, char** argv) {
     print(checkingBal, "checking");
     print(helocBal, "heloc");
   }
+  return 1;
 }
