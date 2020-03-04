@@ -22,5 +22,3 @@ public:
 	void setFee(double);
 	virtual string Transaction(double);
 } Account;
-#define MAIN
-//#define FANCYMAIN
