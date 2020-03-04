@@ -25,7 +25,7 @@ int main(int argc, char** argv) {
   
 #else
   
-void altMain(int argc, char** argv) {
+int altMain(int argc, char** argv) {
 
 #endif
   
@@ -80,4 +80,5 @@ void altMain(int argc, char** argv) {
     cout << "Checking balance: " << checking.getBal() << endl;
     cout << "HELOC balance: " << heloc.getBal() << endl;
   }
+  return 1;
 }
