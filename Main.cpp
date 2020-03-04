@@ -19,16 +19,7 @@ Febuary 27th 2020*/
 //Main:
 //Gets data from file, then outputs transaction results and final account specs. One account of each type.
 
-#ifdef MAIN
-
 int main(int argc, char** argv) {
-  
-#else
-  
-int altMain(int argc, char** argv) {
-
-#endif
-  
   Checking checking, Savings savings, HELOC heloc;
   if (argc > 2) {
     cout << "Too much input..." << endl;
