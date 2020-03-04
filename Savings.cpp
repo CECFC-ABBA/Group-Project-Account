@@ -47,7 +47,7 @@ string Savings::Transaction(double amt) {
 			cin >> withdrawl;
 			if (w > 3) tbal = (bal -= fee);
 			if (withdrawl > bal || withdrawl > tbal) cout << "Insuffient funds. Enter another value or E to exit." << endl;
-			if (!e == 'E' || !e == 'e') con = true;
+			if (!(e == 'E') || !(e == 'e')) con = true;
 		} while (con == true || w <= maxWithdraw);
 		bal -= withdrawl;
 		if (w > 3) {
