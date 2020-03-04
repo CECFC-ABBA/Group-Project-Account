@@ -22,8 +22,8 @@ Define MAIN or FANCYMAIN in Account.h, but not both. This will determine what ma
 1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-1.00000\Checking.cpp(33,23): error C2440: 'return': cannot convert from 'std::string' to 'Checking Checking::* '
 1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-1.00000\Checking.cpp(33,9): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
 1>Source2.cpp
-1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-1.00000\Savings.cpp(37,6): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'char' can equal the given constant
-1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-1.00000\Savings.cpp(37,29): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'char' can equal the given constant
+FIXED: 1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-1.00000\Savings.cpp(37,6): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'char' can equal the given constant
+FIXED: 1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-1.00000\Savings.cpp(37,29): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'char' can equal the given constant
 1>Source3.cpp
 1>Source4.cpp
 1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-1.00000\Main.cpp(24,30): error C2146: syntax error: missing ';' before identifier 'savings'
