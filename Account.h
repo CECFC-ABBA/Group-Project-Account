@@ -5,6 +5,7 @@ typedef class Account {
 	double bal;
 	double intr;
 	double fee;
+	double months;
 public:
 	Account();
 	virtual ~Account();
@@ -17,8 +18,12 @@ public:
 	double getFee() const {
 		return fee;
 	}
+	double getMonths() const {
+		return months;
+	}
 	void setBal(double);
 	void setIntr(double);
 	void setFee(double);
+	void setMonths(double);
 	virtual string Transaction(double);
 } Account;
