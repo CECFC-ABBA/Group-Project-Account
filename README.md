@@ -15,4 +15,4 @@ Define MAIN or FANCYMAIN in Account.h, but not both. This will determine what ma
 1>Source4.cpp
 1>Generating Code...
 1>Done building project "grp.vcxproj" -- FAILED.
-========== Rebuild All: 0 succeeded, 1 failed, 0 skipped ==========
+========== Rebuild All: 1 succeeded, 0 failed, 0 skipped ==========
