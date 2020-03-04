@@ -12,9 +12,9 @@ Define MAIN or FANCYMAIN in Account.h, but not both. This will determine what ma
 1>Source2.cpp
 1>Source3.cpp
 1>Source4.cpp
-1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-10\Checking.h(3,15): error C2371: 'Checking': redefinition; different basic types
+SHOULD BE FIXED: 1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-10\Checking.h(3,15): error C2371: 'Checking': redefinition; different basic types
 1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-10\Savings.h(14): message : see declaration of 'Checking'
-1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-10\Checking.h(15,2): warning C4091: 'typedef ': ignored on left of 'Checking' when no variable is declared
+FIXED: 1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-10\Checking.h(15,2): warning C4091: 'typedef ': ignored on left of 'Checking' when no variable is declared
 1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-10\Main.cpp(23,30): error C2146: syntax error: missing ';' before identifier 'savings'
 1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-10\Main.cpp(23,30): error C2065: 'savings': undeclared identifier
 1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-10\Main.cpp(23,39): error C2275: 'HELOC': illegal use of this type as an expression
