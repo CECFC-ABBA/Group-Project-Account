@@ -19,3 +19,7 @@ void Account::setIntr(double new_intr) {
 void Account::setFee(double new_fee) {
   fee = new_fee;
 }
+
+void Account::setMonths(double new_months) {
+    months = new_months;
+}
