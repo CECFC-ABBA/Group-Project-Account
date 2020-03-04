@@ -19,11 +19,13 @@
 typedef class HELOC final : public Account {
 	double fee = 0;
 	double intr = 0;
+	double months;
 
 private:
 	//Equity
 	double equ;
-	
+	double loan;
+
 public:
 	HELOC();
 	~HELOC();
@@ -31,7 +33,15 @@ public:
 		return equ;
 
 	}
+
+	double getLoan() const {
+		return loan;
+
+	}
+
+
 	void setEqu(double);
+	void setLoan(double);
 	string Transaction(double) final;
 
 } HELOC;
