@@ -12,6 +12,4 @@ public:
 	double getOverDraft() const {
 		return overDraft;
 	}
-};
-#define MAIN
-//#define FANCYMAIN
+} Checking;
