@@ -27,4 +27,4 @@ Main function is a basic function solely for testing the savings, checking, and 
         
 3/9 - Implement graphics, write main
 
-3/10 - Finish everything and test it
+(3/10 - Finish everything and test it)?
