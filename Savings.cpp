@@ -5,6 +5,7 @@ Savings Class Implementations
 #include <string>
 
 Savings::Savings() {
+	//Initialize bal, months, and interest to something besides a blank value (you cannot do bal = getBal())
 	bal = getBal();
 	months = getMonths();
 	interest = getIntr();
@@ -12,11 +13,13 @@ Savings::Savings() {
 }
 
 Savings::~Savings() {
-
+	//Create destructor:
+	
 }
 
 void Savings::Print() {
 	int years = 0;
+	//This for loop will not do what you think it does. Try initializing years to months%12 instead.
 	for (int i = 0; i <= months; i++) {
 		if (i == 12) years++;
 	}
@@ -32,6 +35,7 @@ void Savings::Interest() {
 }
 
 string Savings::Transaction(double amt) {
+	//Where does the variable 'e' get set?
 	double withdrawl = 0, tbal;
 	bool con = false;
 	char e = 'a';
@@ -46,6 +50,7 @@ string Savings::Transaction(double amt) {
 			cout << "How much would you like to withdraw? ";
 			cin >> withdrawl;
 			if (w > 3) tbal = (bal -= fee);
+			//Did you mean to cin >> e in the if below? Currently, the third if will never return false
 			if (withdrawl > bal || withdrawl > tbal) cout << "Insuffient funds. Enter another value or E to exit." << endl;
 			if (!(e == 'E') || !(e == 'e')) con = true;
 		} while ((con == true) || (w <= maxWithdraw));
