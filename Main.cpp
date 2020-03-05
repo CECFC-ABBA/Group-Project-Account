@@ -38,6 +38,7 @@ int main(int argc, char** argv) {
     vector<string> filedata;
     string cur_line;
     do {
+      cur_line = "";
       file >> cur_line;
       filedata.push_back(cur_line);
     } while(cur_line != "");
