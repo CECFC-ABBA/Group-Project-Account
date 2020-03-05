@@ -4,7 +4,7 @@
 
 /*Constructor for Checking*/
 Checking::Checking() {
-    
+	
 };
 
 /*Destructor for Checking*/
@@ -31,5 +31,6 @@ string Checking::Transaction(double amt) {
 		excess = 0;
 		checkingOutput = "Your account has a sufficent balance.";
 	}
+	//You don't handle overdraft anywhere
 	return checkingOutput;
 };
