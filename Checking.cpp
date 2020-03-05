@@ -5,6 +5,7 @@
 /*Constructor for Checking*/
 Checking::Checking() {
 	bal = 0;
+	fee = 0;
 };
 
 /*Destructor for Checking*/
@@ -19,7 +20,7 @@ string Checking::Transaction(double amt) {
 	bal+=amt;
 	double overdraft, excess, overdraftCost = 35.00;
 	string checkingOutput;
-	if (fee < amt) {
+	if (fee < amt || bal >= 0) {
 		bal = bal - fee;
 		excess = 0;
 		checkingOutput = "Your account has a sufficent balance.";
