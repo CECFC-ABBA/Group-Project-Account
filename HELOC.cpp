@@ -14,15 +14,18 @@
 #include <string>
 
 HELOC::HELOC() {
+    //Do we need another equity? You can edit equity directly
     double equ = equity;
 
 }
 
 HELOC::~HELOC() {
+    //Need destructor
 
 }
 
 string HELOC::Transaction(double amt) {
+    //Pls commit
   return "";
 }
 
