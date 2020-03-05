@@ -1,5 +1,5 @@
 #pragma once
-//all includes, defines, etc.
+//This isn't really needed
 #ifdef _WIN32
 #include <Windows.h>
 #endif
