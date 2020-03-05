@@ -1,10 +1,10 @@
 # Group-Project-Account
 This is a group project for the CECFC class 161. This Repository will have the main program, the classes, and derived classes for this project.
+
 # *NOTE*
-Define MAIN or FANCYMAIN in Account.h, but not both. This will determine what main function gets used.
+Main function is a basic function solely for testing the savings, checking, and heloc classes
 
 # ERRORS
-*Note* - Warning level 5, so not all warnings matter. All errors still do.
 ```
 1>------ Rebuild All started: Project: grp, Configuration: Debug Win32 ------
 1>Source.cpp
