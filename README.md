@@ -23,7 +23,7 @@ Main function is a basic function solely for testing the savings, checking, and 
 
 3/6 - Overview of Graphics, discuss implementation < Mr. Cook wants us to have a basic GUI
 
-        -> Graphics will be either WINAPI or the graphics headers I made (if we use that, I might have to work on them a bit)
+        -> Graphics will be either WINAPI or the graphics headers I made < Feel free to tell me any new features you want me to add, or ask me how to use parts of it
         
 3/9 - Implement graphics, write main
 
