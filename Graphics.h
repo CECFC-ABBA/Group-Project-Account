@@ -9,7 +9,6 @@
 #define _GUI_NERROR
 #include "Window.h"
 #include "Background.h"
-//#include "Sprite_List.h"
 #ifndef _GUI_NERROR
 //Probably make the error handling more useful, lol...
 #ifdef _GUI_ERROR 1
