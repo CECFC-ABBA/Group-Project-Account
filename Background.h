@@ -27,29 +27,4 @@ public:
 		BitBlt(screen, 0, 0, width, height, hdc, 0, 0, SRCCOPY);
 	}
 };
-#else
-#ifdef __APPLE__
-#ifdef TARGET_OS_MAC
-
-//Apple computer
-#elif TARGET_IPHONE_SIMULATOR
-
-//Apple phone simulator
-#elif TARGET_OS_IPHONE
-
-//Apple phone
-#else
-#ifdef __linux__
-#ifndef __ANDROID__
-
-//Linux computer
-#else
-#ifdef __ANDROID__
-
-//Android
-#endif
-#endif
-#endif
-#endif
-#endif
 #endif
