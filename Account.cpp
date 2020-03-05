@@ -23,3 +23,7 @@ void Account::setFee(double new_fee) {
 void Account::setMonths(double new_months) {
     months = new_months;
 }
+
+string Account::Transaction(double) {
+    return ""; 
+}
