@@ -4,8 +4,6 @@ This is a group project for the CECFC class 161. This Repository will have the m
 # *NOTE*
 Main function is a basic function solely for testing the savings, checking, and heloc classes
 
-**REMIND ME TO FIX MSG SENDING TIMEOUT ERROR**
-
 # ERRORS
 ```
 1>------ Rebuild All started: Project: grp, Configuration: Debug Win32 ------
