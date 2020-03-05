@@ -4,18 +4,35 @@ This is a group project for the CECFC class 161. This Repository will have the m
 # *NOTE*
 Main function is a basic function solely for testing the savings, checking, and heloc classes
 
-# ERRORS
+# Run Data (from powershell)
 ```
-1>------ Rebuild All started: Project: grp, Configuration: Debug Win32 ------
-1>Source.cpp
-1>Source1.cpp
-1>Source2.cpp
-1>C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-AAA\Savings.cpp(9,20): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-1>Source3.cpp
-1>Source4.cpp
-1>Generating Code...
-1>Done building project "grp.vcxproj" -- FAILED.
-========== Rebuild All: 1 succeeded, 0 failed, 0 skipped ==========
+D:\grp\Debug>grp.exe C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-B\SampleTransactionLog.txt
+Your account has a sufficent balance.
+The current balance of  is: -9.25596e+61
+ has been active for 0 years and -2147483648 months.
+Interest Rate: -9.25596e+61%
+Account balance with interest is: 8.56729e+123
+1. Make a withdrawl. Make a deposit
+3. Exit
+8567285355521620057524459483991459480170871131320943796410311216433197316881456677415593080196293059213543335420088419352576.000000
+^C
+D:\grp\Debug>grp.exe C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-B\SampleTransactionLog.txt
+Your account has a sufficent balance.
+The current balance of  is: -9.25596e+61
+ has been active for 0 years and -2147483648 months.
+Interest Rate: -9.25596e+61%
+Account balance with interest is: 8.56729e+123
+1. Make a withdrawl. Make a deposit
+3. Exit
+8567285355521620057524459483991459480170871131320943796410311216433197316881456677415593080196293059213543335420088419352576.000000
+^C
+D:\grp\Debug>grp.exe C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-B\SampleTransactionLog.txt
+Your account has a sufficent balance.
+Your account has a sufficent balance.
+Savings balance: -9.25596e+61
+Checking balance: -9.25596e+61
+
+D:\grp\Debug>
 ```
 
 # Schedule
