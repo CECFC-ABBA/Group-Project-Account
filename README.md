@@ -16,3 +16,15 @@ Main function is a basic function solely for testing the savings, checking, and 
 1>Generating Code...
 1>Done building project "grp.vcxproj" -- FAILED.
 ========== Rebuild All: 1 succeeded, 0 failed, 0 skipped ==========
+```
+
+# Schedule
+3/5 - Finish all classes (checking, savings, heloc), test them
+
+3/6 - Overview of Graphics, discuss implementation < Mr. Cook wants us to have a basic GUI
+
+        -> Graphics will be either WINAPI or the graphics headers I made (if we use that, I might have to work on them a bit)
+        
+3/9 - Implement graphics, write main
+
+3/10 - Finish everything and test it
