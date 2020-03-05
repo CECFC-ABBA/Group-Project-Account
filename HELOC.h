@@ -19,20 +19,22 @@
  *
  */
 
+ //Equity, credit, interest, time till payed off at minimum pay. 
+
 typedef class HELOC final : public Account {
 	double fee = 0;
 	double intr;
-	double months;
 
 private:
-	//Equity
-	double equ;
+	double equity;
 	double loan;
+	double credit;
+	double year;
 
 public:
 	HELOC();
 	~HELOC();
-	double getEqu() const {
+	double getEquity() const {
 		return equ;
 
 	}
@@ -42,9 +44,20 @@ public:
 
 	}
 
+	double getYears() const {
+		return years;
 
-	void setEqu(double);
+	}
+
+	double getCredit() const {
+		return credit;
+
+	}
+
+	void setEquity(double);
 	void setLoan(double);
+	void setYears(double);
+	void setCredit(double);
 	string Transaction(double) final;
 
 } HELOC;
