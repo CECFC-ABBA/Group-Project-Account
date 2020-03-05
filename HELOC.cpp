@@ -1,31 +1,35 @@
-/*HELOC.cpp
- * ABBA group memeber: Brendan McCleery.
- * 3 March 2020
- *	Purpose:
- * Everything in the HELOC class will be defined here.
- * This will keep track of home equity, the loan(and interest rate), and the fee being payed.
- * (No fee(?), Charges, Interest)
- *  The user will be enabled to see there current home equity. What kind of loan they can pull based off of that, with a random interest fee. 
- * It will display how many months is needed to pay off that loan and your current equity after pulling the loan.
- *
+#pragma once
+/*HELOC.h
+ * Anela
  */
 
-#include "HELOC.h"
-#include <string>
+#include "Account.h"
 
-HELOC::HELOC() {
-    //Do we need another equity? You can edit equity directly
-    double equ = equity;
+ /*  A HELOC is a form of loan that works more like a credit card. You are enabled to pull money from the equity of your home to be
+  * enabled to spend it. It'll have to be payed off in a monthly amounts based off of interest.
+  *
+  */
 
-}
+typedef class HELOC final : public Account {
+private:
+	//Equity
+	double equity, loan, fee = 0, intr;
+    double months;
 
-HELOC::~HELOC() {
-    delete[]this
+public:
+	HELOC();
+	~HELOC();
+	double getEqu() const {
+		//return equ;
 
-}
+	}
 
-string HELOC::Transaction(double amt) {
-    //Pls commit
-  return "";
-}
+	double getLoan() const {
+		return loan;
 
+	}
+    double Calculate(double);
+
+	string Transaction(double) final;
+
+} HELOC;
