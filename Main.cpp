@@ -23,6 +23,9 @@ int main(int argc, char** argv) {
   Checking checking;
   Savings savings;
   HELOC heloc;
+  checking.setBal(0);
+  savings.setBal(0);
+  heloc.setBal(0);
   if (argc > 2) {
     cout << "Too much input..." << endl;
     return 0;
