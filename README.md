@@ -9,7 +9,7 @@ Main function is a basic function solely for testing the savings, checking, and 
 D:\grp\Debug>grp.exe C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-B\SampleTransactionLog.txt
 Your account has a sufficent balance.
 Your account has a sufficent balance.
-Savings balance: 0
+Checking balance: 0
 ```
 
 # Schedule
