@@ -14,18 +14,14 @@ Savings::Savings() {
 
 Savings::~Savings() {
 	//Create destructor:
-	
+
 }
 
 void Savings::Print() {
-	int years = 0;
-	//This for loop will not do what you think it does. Try initializing years to months%12 instead.
-	for (int i = 0; i <= months; i++) {
-		if (i == 12) years++;
-	}
+	int years = months%12;
 	cout << "The current balance of " << accountname << " is: " << bal << endl;
 	cout << accountname << " has been active for " << years << " years and " << months << " months." << endl;
-	cout << "Interest Rate: " << interest << "%\n";
+	cout << "Interest Rate: " << interest << "% \n";
 }
 
 void Savings::Interest() {
@@ -34,25 +30,24 @@ void Savings::Interest() {
 	cout << "Account balance with interest is: " << bal << endl;
 }
 
-//Actually, amt is the amount being deposited (if positive), and withdrawn (if negative)
 string Savings::Transaction(double amt) {
-	//Where does the variable 'e' get set?
 	double withdrawl = 0, tbal;
 	bool con = false;
 	char e = 'a';
 	int choice, w = 0, fee = 75;
 	Print();
 	Interest();
-	cout << "1. Make a withdrawl\2. Make a deposit\n3. Exit" << endl;
-	cin >> choice;
+	if (amt < 0) choice = 1;
+	if (amt > 0) choice = 2;
 	switch (choice) {
 	case 1:
 		do {
-			cout << "How much would you like to withdraw? ";
-			cin >> withdrawl;
+			withdrawl = amt / -1;
 			if (w > 3) tbal = (bal -= fee);
-			//Did you mean to cin >> e in the if below? Currently, the third if will never return false
-			if (withdrawl > bal || withdrawl > tbal) cout << "Insuffient funds. Enter another value or E to exit." << endl;
+			if (withdrawl > bal || withdrawl > tbal) {
+				cout << "Insuffient funds. Enter another value or E to exit." << endl;
+				cin >> e;
+			}
 			if (!(e == 'E') || !(e == 'e')) con = true;
 		} while ((con == true) || (w <= maxWithdraw));
 		bal -= withdrawl;
@@ -66,10 +61,7 @@ string Savings::Transaction(double amt) {
 		else if (w == 1) cout << "You make make two more free withdrawls." << endl;
 		break;
 	case 2:
-		double deposit;
-		cout << "What is the deposit amount? ";
-		cin >> deposit;
-		bal += deposit;
+		bal += amt;
 		cout << "After your deposit is verified, your account balance will be: $" << bal << endl;
 		break;
 	default:
