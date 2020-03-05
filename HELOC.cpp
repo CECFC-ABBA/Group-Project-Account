@@ -1,35 +1,36 @@
-#pragma once
-/*HELOC.h
+/*HELOC.cpp
  * Anela
  */
 
-#include "Account.h"
+#include "HELOC.h"
+#include <string>
 
- /*  A HELOC is a form of loan that works more like a credit card. You are enabled to pull money from the equity of your home to be
-  * enabled to spend it. It'll have to be payed off in a monthly amounts based off of interest.
-  *
-  */
+HELOC::HELOC() {
+    double houseval, mortgage;
+    cout << "What is the current value of your property? ";
+    cin >> houseval;
+    cout << "What is your current mortgage? ";
+    cin >> mortgage;
+    months = getMonths();
+    equity = houseval - mortgage;
+    loan = equity - (equity * .2);
+}
 
-typedef class HELOC final : public Account {
-private:
-	//Equity
-	double equity, loan, fee = 0, intr;
-    double months;
+HELOC::~HELOC() {
 
-public:
-	HELOC();
-	~HELOC();
-	double getEqu() const {
-		//return equ;
+}
 
-	}
+double HELOC::Calculate(double) {
+    
+}
 
-	double getLoan() const {
-		return loan;
+string HELOC::Transaction(double amt) {
+    char user;
+    cout << "Your maximum loan is worth: $" << loan << endl;
+    cout << "Would you like to activate your HELOC?" << endl; //assuming user is eligible
+    cin >> user;
+    if ((user == 'Y') || (user == 'y')) {
 
-	}
-    double Calculate(double);
-
-	string Transaction(double) final;
-
-} HELOC;
+    }
+    return "";
+}
