@@ -20,7 +20,7 @@ HELOC::HELOC() {
 }
 
 HELOC::~HELOC() {
-    //Need destructor
+    delete[]this
 
 }
 
