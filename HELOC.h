@@ -7,7 +7,7 @@
  * This will keep track of home equity, the loan(and interest rate), and the fee being payed. 
  * (No fee, Charges, Interest)
  *	4 March 2020
- * Messed with removing and adding variables.
+ * Messed with removing and adding "variables."
  *
  *
  */
@@ -26,16 +26,21 @@ typedef class HELOC final : public Account {
 	double intr;
 
 private:
+	double credit;
 	double equity;
 	double loan;
-	double credit;
 	double year;
 
 public:
 	HELOC();
 	~HELOC();
+	double getCredit() const {
+		return credit;
+
+	}
+
 	double getEquity() const {
-		return equ;
+		return equity;
 
 	}
 
@@ -46,11 +51,6 @@ public:
 
 	double getYears() const {
 		return years;
-
-	}
-
-	double getCredit() const {
-		return credit;
 
 	}
 
