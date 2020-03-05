@@ -34,6 +34,7 @@ void Savings::Interest() {
 	cout << "Account balance with interest is: " << bal << endl;
 }
 
+//Actually, amt is the amount being deposited (if positive), and withdrawn (if negative)
 string Savings::Transaction(double amt) {
 	//Where does the variable 'e' get set?
 	double withdrawl = 0, tbal;
