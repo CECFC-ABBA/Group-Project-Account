@@ -6,13 +6,12 @@ main() {
 	Window window;
 	POINT pos, spritePos, sprite2Pos;
 	int style, width, height, background_width, background_height;
-	const char* name;
+	const char* name = "My Window"; //Set this
 	const char* path = "C:\\Line.bmp"; //Must be a .bmp image file
 	const char* path2 = "C:\\Line.bmp"; //Must be a .bmp image file
 	style = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE | WS_MINIMIZEBOX | WS_MAXIMIZEBOX; //Set this
 	width = 500; //Set this
 	height = 500; //Set this
-	name = "My Window"; //Set this
 	pos.x = 500; //Set this
 	pos.y = 500; //Set this
 	background_width = 100; //Set this
