@@ -7,7 +7,8 @@
  */
 #pragma once
 #define _GUI_NERROR
-#define DO_NOTHING
+#define Slash() /
+#define DO_NOTHING Slash()Slash()
 #include "Window.h"
 #include "Background.h"
 #ifndef _GUI_NERROR
