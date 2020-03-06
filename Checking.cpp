@@ -1,5 +1,6 @@
 #include "Checking.h"
 #include "Account.h"
+#include <iostream>
 #include <string>
 
 /*Constructor for Checking*/
@@ -24,7 +25,7 @@ string Checking::Transaction(double amt) {
 	if (fee < amt || amt >= 0) {
 		amt = amt - fee;
 		excess = 0;
-		checkingOutput = "Your account has a sufficent balance. You have " + to_string(bal) + " dollars in your account.";
+		cout << "Your account has a sufficent balance. You have " + to_string(bal) + " dollars in your account." << endl;
 	}
 	else {
 		excess = amt - fee;
