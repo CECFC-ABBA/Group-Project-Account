@@ -24,7 +24,7 @@ string Checking::Transaction(double amt) {
 	if (fee < amt || amt >= 0) {
 		amt = amt - fee;
 		excess = 0;
-		checkingOutput = "Your account has a sufficent balance.";
+		checkingOutput = "Your account has a sufficent balance. You have " + to_string(bal) + " dollars in your account.";
 	}
 	else {
 		excess = amt - fee;
