@@ -31,6 +31,7 @@ void Savings::Interest() {
 }
 
 string Savings::Transaction(double amt) {
+	//MUST initialize tbal before line 48
 	double withdrawl = 0, tbal;
 	bool con = false;
 	char e = 'a';
