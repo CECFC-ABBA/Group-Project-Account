@@ -4,13 +4,7 @@ This is a group project for the CECFC class 161. This Repository will have the m
 # *NOTE*
 Main function is a basic function solely for testing the savings, checking, and heloc classes
 
-# Run Data (from powershell) testing Brennan's code (Anela and Brendan's not finished yet)
-```
-D:\grp\Debug>grp.exe C:\Users\ajkmc\downloads\Group-Project-Account\Group-Project-Account-B\SampleTransactionLog.txt
-Your account has a sufficent balance.
-Your account has a sufficent balance.
-Checking balance: 0
-```
+# Checking is finished!
 
 # Schedule
 3/5 - Finish all classes (checking, savings, heloc), test them
