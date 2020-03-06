@@ -31,7 +31,7 @@ string Checking::Transaction(double amt) {
 		excess = amt - fee;
 		amt = 0;
 		checkingOutput = "There is not enough money in your account. An overdraft will occur.";
-		overdraft = excess + overdraftCost;
+		overdraft = (excess - overdraftCost)*-1;
 		cout << "You owe the bank " << overdraft << " dollars." << endl;
 	}
 	return checkingOutput;
