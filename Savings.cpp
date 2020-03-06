@@ -5,10 +5,9 @@ Savings Class Implementations
 #include <string>
 
 Savings::Savings() {
-	//Initialize bal, months, and interest to something besides a blank value (you cannot do bal = getBal())
-	bal = getBal();
-	months = getMonths();
-	interest = getIntr();
+	bal = 5000;
+	months = 18;
+	interest = 1.75;
 	maxWithdraw = 3;
 }
 
@@ -18,6 +17,9 @@ Savings::~Savings() {
 }
 
 void Savings::Print() {
+	bal = getBal();
+	months = getMonths();
+	interest = getIntr();
 	int years = months%12;
 	cout << "The current balance of " << accountname << " is: " << bal << endl;
 	cout << accountname << " has been active for " << years << " years and " << months << " months." << endl;
@@ -31,11 +33,10 @@ void Savings::Interest() {
 }
 
 string Savings::Transaction(double amt) {
-	//MUST initialize tbal before line 48
 	double withdrawl = 0, tbal;
 	bool con = false;
 	char e = 'a';
-	int choice, w = 0, fee = 75;
+	int choice = 0, w = 0, fee = 75;
 	Print();
 	Interest();
 	if (amt < 0) choice = 1;
@@ -46,11 +47,10 @@ string Savings::Transaction(double amt) {
 			withdrawl = amt / -1;
 			if (w > 3) tbal = (bal -= fee);
 			if (withdrawl > bal || withdrawl > tbal) {
-				cout << "Insuffient funds. Enter another value or E to exit." << endl;
-				cin >> e;
+				cout << "Insuffient funds. Enter another value." << endl;
+				cin >> withdrawl;
 			}
-			if (!(e == 'E') || !(e == 'e')) con = true;
-		} while ((con == true) || (w <= maxWithdraw));
+		} while (w <= maxWithdraw);
 		bal -= withdrawl;
 		if (w > 3) {
 			bal -= fee;
