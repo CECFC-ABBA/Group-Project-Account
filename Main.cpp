@@ -52,7 +52,7 @@ int main(int argc, char** argv) {
           acct.push_back(toupper(transaction[i])); 
         }
         else if (i < static_cast<int>(transaction.length()) - 1) {
-          for (int j = i; j < static_cast<int>(transaction.length()); j++) {
+          for (int j = i + 1; j < static_cast<int>(transaction.length()); j++) {
             bal_change_str.push_back(transaction[j]);
           }
           break;
@@ -62,7 +62,7 @@ int main(int argc, char** argv) {
           return 0;
         }
       }
-      double bal_change = atoi(bal_change_str.c_str());
+      double bal_change = atof(bal_change_str.c_str());
       if (acct == "SAVINGS") {
         cout << savings.Transaction(bal_change) << endl;
       }
