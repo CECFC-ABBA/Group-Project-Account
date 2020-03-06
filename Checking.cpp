@@ -1,6 +1,5 @@
 #include "Checking.h"
 #include "Account.h"
-#include <iostream>
 #include <string>
 
 /*Constructor for Checking*/
@@ -16,19 +15,32 @@ Checking::~Checking() {
 	delete[]balance;*/
 }
 
+string fixDouble(string doubl) {
+	int index = static_cast<int>(doubl.length() - 1);
+	for (int i = 0; i < static_cast<int>(doubl.length()); i++) {
+		if (doubl[static_cast<int>(doubl.length() - 1)-i] == '0') {
+			index--;
+		}
+		else {
+			break;
+		}
+	}
+	doubl = doubl.substr(0, index + 1);
+	return doubl;
+}
+
 /*Code for determining if the account has the money to handle a fee and reducing the balance if so*/
 string Checking::Transaction(double amt) {
-	//bal+=amt;
-	amt = bal;
+	bal+=amt;
 	double overdraft, excess, overdraftCost = 35.00;
 	string checkingOutput;
-	if (fee < amt || amt >= 0) {
-		amt = amt - fee;
+	if (fee < amt) {
+		bal = bal - fee;
 		excess = 0;
-		cout << "Your account has a sufficent balance. You have " + to_string(bal) + " dollars in your account." << endl;
+		checkingOutput = "Your account has a sufficent balance. You have " + fixDouble(to_string(bal)) + " dollars left.";
 	}
 	else {
-		excess = amt - fee;
+		excess = bal - fee;
 		amt = 0;
 		checkingOutput = "There is not enough money in your account. An overdraft will occur.";
 		overdraft = (excess - overdraftCost)*-1;
