@@ -1,5 +1,5 @@
  /*HELOC.cpp
- * ABBA group memeber(s): Brendan McCleery, Anela
+ * ABBA group memeber(s): Brendan McCleery, Anela Gallegos
  * 3 March 2020
  *	Purpose:
  * Everything in the HELOC class will be defined here.
@@ -33,20 +33,38 @@ double HELOC::Calculate(double) {
 }
 
 string HELOC::Transaction(double amt) {
-    char user, input, temp, /*userChoice, */choice;
-    cout << "Do you have an existing HELOC?\n (1) Yes (2) No\nInput 1 or 2 then [Enter]\n";
+    char user, input, temp, /*userChoice*/, choice;
+    cout << "Do you have an existing HELOC?\n (1) Yes (2) No\nInput 1 or 2 then [Enter]\n"
         cin >> user;
     if (user = 1) choice = 1;
     if (user = 2) choice = 2;
-    if (user != 1 || user != 2) choice = 3;
+    //if (user != 1 || user != 2) choice = 3;
+    else choice = 3;
     switch (choice) {
     case 1:
         //User Has existing HELOC
-        cout << "What would you like to view from your HELOC?\n    Remaining Payment: \n"
-            << "    Current interest: \n    Home Equity:" << endl;
+        cout << "What would you like to view from your HELOC?\n(1) Remaining Payment: \n"
+            << "(2) Current interest: \n(3) Home Equity:" << endl;
+        cin >> user;
+
+        if (user = 1) {
+            cout << "The Remaining payment in your HELOC is " << /**/ << endl;
+            
+        }
+
+        if (user = 2) {
+            cout << "The current interest on your HELOC is " << /**/ << endl;
+
+        }
+
+        //May not be needed
+        if (user = 3) {
+            cout << "The current value of your home equity is? " << /**/ << endl;
+
+        }
 
     case 2:
-        //User is creating a HELOC
+        //User is creating a HELOC(maybe?)
         cout << "Your maximum loan is worth: $" << loan << endl;
         cout << "Would you like to activate your HELOC?" << endl; //assuming user is eligible
         cin >> user;
@@ -79,10 +97,7 @@ string HELOC::Transaction(double amt) {
 
     case 3:
         //There isn't a third choice
-      
-    default:
-      //Nothing
-      
+
     }
     string trans = to_string(loan);
     return trans;
