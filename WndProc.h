@@ -47,6 +47,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 		startMethod();
 		break;
 	case WM_CLOSE:
+		exit(1);
+		break;
 	case WM_QUIT:
 	case WM_DESTROY:
 		destructionMethod(hWnd);
