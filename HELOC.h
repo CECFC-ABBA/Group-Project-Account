@@ -1,6 +1,14 @@
 #pragma once
 /*HELOC.h
- * Anela
+ * ABBA group memeber: Brendan McCleery.
+ * 27 February 2020
+ *	Purpose:
+ * This is the HELOC class Inherrited from Account.
+ * This will keep track of home equity, the loan(and interest rate), and the fee being payed.
+ * (No fee, Charges, Interest)
+ *	4 March 2020
+ * Messed with removing and adding "variables."
+ *
  *
  */
 
@@ -11,17 +19,28 @@
   *
   */
 
+  //Equity, credit, interest, time till payed off at minimum pay. 
+
 typedef class HELOC final : public Account {
+	double fee = 0;
+	double intr1 = 0, intr2 = 0;
+
 private:
-	//Equity
-	double equity, loan, fee = 0, intr;
-    double months;
+	double credit = 0;
+	double equity = 0;
+	double loan = 0;
+	double years = 0;
 
 public:
 	HELOC();
 	~HELOC();
-	double getEqu() const {
-		//return equ;
+	double getCredit() const {
+		return credit;
+
+	}
+
+	double getEquity() const {
+		return equity;
 
 	}
 
@@ -29,8 +48,17 @@ public:
 		return loan;
 
 	}
-    double Calculate(double);
 
+	double getYears() const {
+		return years;
+
+	}
+
+	void setEquity(double);
+	void setLoan(double);
+	void setYears(double);
+	void setCredit(double);
+	string fixDouble(string);
 	string Transaction(double) final;
 
 } HELOC;
