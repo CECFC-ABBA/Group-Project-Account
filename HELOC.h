@@ -29,7 +29,7 @@ private:
 	double credit;
 	double equity;
 	double loan;
-	double year;
+	double years;
 
 public:
 	HELOC();
