@@ -39,7 +39,7 @@ string HELOC::Transaction(double amt) {
     if (user = 1) choice = 1;
     if (user = 2) choice = 2;
     //if (user != 1 || user != 2) choice = 3;
-    else choice = 3;
+    else (choice = 3;)
     switch (choice) {
     case 1:
         //User Has existing HELOC
