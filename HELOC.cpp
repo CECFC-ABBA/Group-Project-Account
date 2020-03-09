@@ -33,8 +33,8 @@ double HELOC::Calculate(double) {
 }
 
 string HELOC::Transaction(double amt) {
-    char user, input, temp, /*userChoice*/, choice;
-    cout << "Do you have an existing HELOC?\n (1) Yes (2) No\nInput 1 or 2 then [Enter]\n"
+    char user, input, temp, /*userChoice, */choice;
+    cout << "Do you have an existing HELOC?\n (1) Yes (2) No\nInput 1 or 2 then [Enter]\n";
         cin >> user;
     if (user = 1) choice = 1;
     if (user = 2) choice = 2;
@@ -79,7 +79,10 @@ string HELOC::Transaction(double amt) {
 
     case 3:
         //There isn't a third choice
-
+      
+    default:
+      //Nothing
+      
     }
     string trans = to_string(loan);
     return trans;
