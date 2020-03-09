@@ -61,5 +61,3 @@ public:
 	string Transaction(double) final;
 
 } HELOC;
-
-//I found an error for the years varible on line 53 not being declared in this scope
