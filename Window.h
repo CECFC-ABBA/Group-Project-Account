@@ -128,7 +128,7 @@ public:
 	}
 	int update() {
 		MSG msg;
-		if (PeekMessage(&msg, this_window, 0, 0)) {
+		if (GetMessage(&msg, this_window, 0, 0)) {
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 			return 0;
