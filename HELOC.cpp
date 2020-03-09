@@ -33,7 +33,7 @@ double HELOC::Calculate(double) {
 }
 
 string HELOC::Transaction(double amt) {
-    char user, input, temp, /*userChoice*/, choice;
+    char user, input, temp, /*userChoice, */choice;
     cout << "Do you have an existing HELOC?\n (1) Yes (2) No\nInput 1 or 2 then [Enter]\n"
         cin >> user;
     if (user = 1) choice = 1;
