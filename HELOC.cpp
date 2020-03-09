@@ -1,5 +1,5 @@
-/*HELOC.cpp
- * ABBA group memeber: Brendan McCleery.
+ /*HELOC.cpp
+ * ABBA group memeber(s): Brendan McCleery, Anela
  * 3 March 2020
  *	Purpose:
  * Everything in the HELOC class will be defined here.
