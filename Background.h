@@ -16,15 +16,16 @@ protected:
 	int width;
 	int height;
 public:
-	void load(const char* path, int w, int h) {
-		hdc = CreateCompatibleDC(NULL);
-		bmp = (HBITMAP)LoadImageA(NULL, path, NULL, 0, 0, LR_LOADFROMFILE);
+	void load(const char* path, int w, int h, HINSTANCE hInst) {
+		hdc = CreateCompatibleDC(0);
+		//bmp = LoadBitmap(NULL, path);
+		bmp = (HBITMAP)LoadImageA(NULL, path, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 		lastbmp = (HBITMAP)SelectObject(hdc, bmp);
 		width = w;
 		height = h;
 	}
-	void draw(HDC screen) {
-		BitBlt(screen, 0, 0, width, height, hdc, 0, 0, SRCCOPY);
+	void draw(HDC screen, int x, int y) {
+		BitBlt(screen, x, y, width, height, hdc, 0, 0, SRCCOPY);
 	}
 };
 #endif
