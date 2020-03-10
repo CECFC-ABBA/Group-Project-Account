@@ -15,6 +15,8 @@ Checking::~Checking() {
 	delete[]balance;*/
 }
 
+void checkingOutput();
+
 string fixDouble(string doubl) {
 	int index = static_cast<int>(doubl.length() - 1);
 	for (int i = 0; i < static_cast<int>(doubl.length()); i++) {
@@ -37,14 +39,17 @@ string Checking::Transaction(double amt) {
 	if (fee < amt) {
 		bal = bal - fee;
 		excess = 0;
-		checkingOutput = "Your account has a sufficent balance. You have " + fixDouble(to_string(bal)) + " dollars left.";
+		void checkingOutput(){
+			cout << "Your account has a sufficent balance. You have $" + fixDouble(to_string(bal)) + " remaining after the $" << fee << " cost." << endl;
+		}
 	}
 	else {
 		excess = bal - fee;
 		amt = 0;
-		checkingOutput = "There is not enough money in your account. An overdraft will occur.";
 		overdraft = (excess - overdraftCost)*-1;
-		cout << "You owe the bank " << overdraft << " dollars." << endl;
+		void checkingOutput(){
+			cout << "There is not enough money in your account. An overdraft will occur." << endl;
+			cout << "Your account has been reduced to $0 and you owe the bank $" << overdraft << "." << endl;}
 	}
 	return checkingOutput;
 };
