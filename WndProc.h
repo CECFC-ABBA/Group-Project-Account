@@ -17,7 +17,7 @@ void moveMethod();
 void charPressMethod(WPARAM wParam);
 void resizeMethod();
 void windowDisplayMethod();
-void leftMouseClickMethod();
+void leftMouseClickMethod(HWND hWnd);
 void rightMouseClickMethod();
 void defaultMethod();
 void drawBack(HDC painting_DC);
@@ -32,7 +32,7 @@ void drawBack(HDC painting_DC);
 #define GetCharPressed() wParam
 #define onResize() void resizeMethod()
 #define onShow() void windowDisplayMethod()
-#define onLClick() void leftMouseClickMethod()
+#define onLClick() void leftMouseClickMethod(HWND hWnd)
 #define onRClick() void rightMouseClickMethod()
 #define onNothing() void defaultMethod()
 #define drawBackground() void drawBack(HDC painting_DC)
@@ -66,7 +66,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 		invalidWindowMethod();
 		break;
 	case WM_LBUTTONDOWN:
-		leftMouseClickMethod();
+		leftMouseClickMethod(hWnd);
 	case WM_PAINT: {
 		PAINTSTRUCT ps;
 		HDC drw_DC = BeginPaint(hWnd, &ps);
