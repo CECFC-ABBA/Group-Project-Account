@@ -1,6 +1,6 @@
 #pragma once
 /*HELOC.h
- * ABBA group memeber: Brendan McCleery.
+ * ABBA group memeber(s): Brendan McCleery, Anela Gallegos
  * 27 February 2020
  *	Purpose:
  * This is the HELOC class Inherrited from Account.
@@ -15,50 +15,50 @@
 #include "Account.h"
 
  /*  A HELOC is a form of loan that works more like a credit card. You are enabled to pull money from the equity of your home to be
-  * enabled to spend it. It'll have to be payed off in a monthly amounts based off of interest.
+  * enabled to spend it. It'll have to be payed off in a monthly amounts based off of interest. Over the time span of a few years dependant on the loan.
   *
   */
 
   //Equity, credit, interest, time till payed off at minimum pay. 
 
-typedef class HELOC final : public Account {
+	typedef class HELOC final : public Account {
 	double fee = 0;
-	double intr1 = 0, intr2 = 0;
+	double intr1 = 0, intr2 = 0, intr;
 
-private:
-	double credit = 0;
-	double equity = 0;
-	double loan = 0;
-	double years = 0;
+	private:
+		double credit = 0;
+		double equity = 0;
+		double loan = 0;
+		double years = 0;
 
-public:
-	HELOC();
-	~HELOC();
-	double getCredit() const {
-		return credit;
+	public:
+		HELOC();
+		~HELOC();
+		double getCredit() const {
+			return credit;
 
-	}
+		}
 
-	double getEquity() const {
-		return equity;
+		double getEquity() const {
+			return equity;
 
-	}
+		}
 
-	double getLoan() const {
-		return loan;
+		double getLoan() const {
+			return loan;
 
-	}
+		}
 
-	double getYears() const {
-		return years;
+		double getYears() const {
+			return years;
 
-	}
+		}
 
-	void setEquity(double);
-	void setLoan(double);
-	void setYears(double);
-	void setCredit(double);
-	string fixDouble(string);
-	string Transaction(double) final;
+		void setEquity(double);
+		void setLoan(double);
+		void setYears(double);
+		void setCredit(double);
+		string fixDouble(string);
+		string Transaction(double) final;
 
 } HELOC;
