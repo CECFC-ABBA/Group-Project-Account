@@ -49,17 +49,17 @@ string HELOC::Transaction(double amt) {
 
             if (user = 1) {
                 cout << "The Remaining payment in your HELOC is " << /**/ << endl;
-
+                
             }
 
             if (user = 2) {
-                cout << "The current interest on your HELOC is " << /**/ << endl;
+                cout << "The current interest on your HELOC is " << intr << endl;
 
             }
 
             //May not be needed
             if (user = 3) {
-                cout << "The current value of your home equity is? " << /**/ << endl;
+                cout << "The current value of your home equity is? " << equity << endl;
 
             }
 
