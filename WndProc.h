@@ -56,9 +56,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 	case WM_ERASEBKGND:
 		eraseMethod();
 		break;
-	case WM_LBUTTONDOWN:
-		leftMouseClickMethod();
-		break;
 	case WM_RBUTTONDOWN:
 		rightMouseClickMethod();
 		break;
@@ -68,13 +65,20 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 	case WM_NULL:
 		invalidWindowMethod();
 		break;
-	case WM_PAINT:
+	case WM_LBUTTONDOWN:
+		leftMouseClickMethod();
+	case WM_PAINT: {
 		PAINTSTRUCT ps;
-		painting_DC = BeginPaint(hWnd, &ps);
-		InvalidateRect(hWnd, 0, true);//clear screen WITHOUT FLASHING...
+		HDC drw_DC = BeginPaint(hWnd, &ps);
+		HDC painting_DC = CreateCompatibleDC(0);
+		HBITMAP bmp = CreateCompatibleBitmap(drw_DC, 500, 500);
+		HGDIOBJ temp = SelectObject(painting_DC, bmp);
+		InvalidateRect(hWnd, 0, false);
 		drawBack(painting_DC);
 		paintRoutine(painting_DC, hWnd);
+		BitBlt(drw_DC, 0, 0, 500, 500, painting_DC, 0, 0, SRCCOPY);
 		EndPaint(hWnd, &ps);
+	}
 		break;
 	case WM_SHOWWINDOW:
 		windowDisplayMethod();
