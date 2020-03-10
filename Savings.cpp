@@ -17,8 +17,21 @@ Savings::~Savings() {
 	interest = 0;
 	maxWithdraw = 3;
 }
+double Savings::setBal() const {
+	cout << "What is your savings account balance? $";
+	cin >> bal;
+	return bal;
+}
+
+double Savings::setMonths() const {
+	cout << "How many months has your account been active? ";
+	cin >> months;
+	return months;
+}
 
 void Savings::Print() {
+	//setBal();
+	//setMonths();
 	int years = months%12;
 	cout << "The current balance of " << accountname << " is: " << bal << endl;
 	cout << accountname << " has been active for " << years << " years and " << months << " months." << endl;
