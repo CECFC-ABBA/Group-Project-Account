@@ -30,12 +30,12 @@ HELOC::~HELOC() {
 
 string HELOC::Transaction(double amt) {
     char user, input, temp, /*userChoice, */choice;
-    cout << "Do you have an existing HELOC?\n (1) Yes (2) No\nInput 1 or 2 then [Enter]\n"
+    cout << "Do you have an existing HELOC?\n (1) Yes (2) No\nInput 1 or 2 then [Enter]\n";
         cin >> user;
     if (user = 1) choice = 1;
     if (user = 2) choice = 2;
     //if (user != 1 || user != 2) choice = 3;
-    else (choice = 3;)
+    else {choice = 3;}
     switch (choice) {
     case 1:
         //User Has existing HELOC
