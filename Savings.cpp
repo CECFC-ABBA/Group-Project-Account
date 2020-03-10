@@ -30,8 +30,8 @@ double Savings::setMonths() const {
 }
 
 void Savings::Print() {
-	//setBal();
-	//setMonths();
+	setBal(); //grey this function to use defaults
+	setMonths(); //same as above
 	int years = months%12;
 	cout << "The current balance of " << accountname << " is: " << bal << endl;
 	cout << accountname << " has been active for " << years << " years and " << months << " months." << endl;
