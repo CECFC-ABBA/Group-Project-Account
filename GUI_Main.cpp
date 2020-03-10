@@ -1,11 +1,14 @@
 #include "Graphics.h"
-#include "HELOC.h"
+//#include "HELOC.h"
 #include "Checking.h"
-#include "Savings.h"
+//#include "Savings.h"
 #include <vector>
 #ifdef _WIN32
 vector<Background> backgrounds; //Backgrounds must be global variables
 bool onFirstScrn = true, onSavings = false, onChecking = false, onHELOC = false;
+//vector<Checking> checking;
+//vector<Savings> savings;
+//vector<HELOC> heloc;
 main() {
 	ErrorFunction();
 	Window window;
@@ -40,70 +43,71 @@ main() {
 }
 onPaint() {
 	HDC screen = get_DC();
-	//Code what to do when the window paints here:
 	DO_NOTHING;
 }
 onStart() {
-	//Code what to do when the window starts here:
 	DO_NOTHING;
 }
 onErase() {
-	//Code what to do when the window erases here:
 	DO_NOTHING;
 }
 onClose() {
-	//Code what to do when the window closes here:
 	DO_NOTHING;
 }
 ifInvalidWindow() {
-	//Code what to do if the window is invalid here:
 	DO_NOTHING;
 }
 onMove() {
-	//Code what to do if the user moves the window here:
 	DO_NOTHING;
 }
 onCharPress() {
 	char keyPressed = GetCharPressed();
-	//Code what to do if the user presses a key here:
 	DO_NOTHING;
 }
 onResize() {
-	//Code what to do if the user resizes the window here:
 	DO_NOTHING;
 }
 onShow() {
-	//Code what to do when the window is displaying here:
 	DO_NOTHING;
 }
 onLClick() {
 	POINT mouse_pos;
-	GetCursorPos(&mouse_pos);//This isn't working...
-	if (mouse_pos.x >= 200 && mouse_pos.x <= 300) {
-		if (mouse_pos.y >= 225 && mouse_pos.y <= 275) {
-			onFirstScrn = false, onSavings = false, onChecking = true, onHELOC = false;
+	if (GetCursorPos(&mouse_pos)) {
+		RECT rc;
+		GetWindowRect(hWnd, &rc);
+		mouse_pos.x -= rc.left;
+		mouse_pos.y -= rc.top;
+		if (onFirstScrn == true) {
+			if (mouse_pos.x >= 200 && mouse_pos.x <= 300) {
+				if (mouse_pos.y >= 225 && mouse_pos.y <= 275) {
+					onFirstScrn = false, onSavings = false, onChecking = true, onHELOC = false;
+				}
+				else if (mouse_pos.y >= 165 && mouse_pos.y <= 215) {
+					onFirstScrn = false, onSavings = false, onChecking = false, onHELOC = true;
+				}
+				else if (mouse_pos.y >= 285 && mouse_pos.y <= 335) {
+					onFirstScrn = false, onSavings = true, onChecking = false, onHELOC = false;
+				}
+			}
 		}
-		else if (mouse_pos.y >= 165 && mouse_pos.y <= 215) {
-			onFirstScrn = false, onSavings = false, onChecking = false, onHELOC = true;
-		}
-		else if (mouse_pos.y >= 285 && mouse_pos.y <= 335) {
-			onFirstScrn = false, onSavings = true, onChecking = false, onHELOC = false;
+		else if (mouse_pos.x >= 0 && mouse_pos.x <= 100) {
+			if (mouse_pos.y >= 0 && mouse_pos.y <= 50) {
+				onFirstScrn = true, onChecking = false, onSavings = false, onHELOC = false;
+			}
+			else if (mouse_pos.y >= 60 && mouse_pos.y <= 110) {
+				//Edit
+			}
 		}
 	}
-	onFirstScrn = false, onHELOC = true;
-	//Code what to do when the user clicks the left mouse key
 }
 onRClick() {
-	//Code what to do when the user clicks the right mouse key
 	DO_NOTHING;
 }
 onNothing() {
-	//Code what to do if none of the above happen
 	DO_NOTHING;
 }
 drawBackground() {
 	HDC screen = get_DC();
-	//Add logic to determine what background to draw here
 	  if (onFirstScrn == true) {
 		  backgrounds[0].draw(screen, 0, 0);
 		  backgrounds[1].draw(screen, 200, 225);
@@ -118,14 +122,31 @@ drawBackground() {
 		  TextOut(screen, 225, 15, L"------------", 13);
 		  TextOut(screen, 225, 10, L"Accounts:", 10);
 		  if (onHELOC == true) {
-			  
-			  //HELOC
+			  //for (HELOC h : heloc) {
+				  //Display info
+			  //}
+			  backgrounds[1].draw(screen, 0, 0);
+			  TextOut(screen, 0, 10, L"Back", 4);
+			  backgrounds[2].draw(screen, 0, 35);
+			  TextOut(screen, 0, 65, L"Edit", 6);
 		  }
 		  else if (onSavings == true) {
-			  //Savings
+			  //for (Savins s : savings) {
+				  //Display info
+			  //}
+			  backgrounds[1].draw(screen, 0, 0);
+			  TextOut(screen, 0, 10, L"Back", 4);
+			  backgrounds[2].draw(screen, 0, 35);
+			  TextOut(screen, 0, 65, L"Edit", 6);
 		  }
 		  else if (onChecking == true) {
-			  //Checking
+			  //for (Checking c : checking) {
+				  //Display info
+			  //}
+			  backgrounds[1].draw(screen, 0, 0);
+			  TextOut(screen, 0, 10, L"Back", 4);
+			  backgrounds[2].draw(screen, 0, 35);
+			  TextOut(screen, 0, 65, L"Edit", 6);
 		  }
 	  }
 }
