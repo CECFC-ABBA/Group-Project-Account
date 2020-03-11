@@ -30,6 +30,7 @@
 		double equity = 0;
 		double loan = 0;
 		double years = 0;
+		double months = 0;
 
 	public:
 		HELOC();
