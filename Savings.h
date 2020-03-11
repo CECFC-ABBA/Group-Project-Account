@@ -14,5 +14,5 @@ public:
 	double setMonths() const;
 	string fixDouble(string);
 	string Transaction(double) final;
-} Checking;
+} Savings;
 //Anela
