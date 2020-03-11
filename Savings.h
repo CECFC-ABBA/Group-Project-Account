@@ -10,8 +10,8 @@ public:
 	~Savings();
 	void Print();
 	void Interest();
-	double setBal() const;
-	double setMonths() const;
+	double setBal() /*const*/;
+	double setMonths() /*const*/;
 	string fixDouble(string);
 	string Transaction(double) final;
 } Savings;
