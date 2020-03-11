@@ -1,16 +1,17 @@
 //I didn't have time to make the button click check perfect
 #include "Graphics.h"
-//#include "HELOC.h"
+#include "HELOC.h"
 #include "Checking.h"
-//#include "Savings.h"
+#include "Savings.h"
 #include <vector>
+#include <string>
 #ifdef _WIN32
 vector<Background> backgrounds; //Backgrounds must be global variables
 vector<char> chars;
 bool onFirstScrn = true, onSavings = false, onChecking = false, onHELOC = false, edit = false, deposit = false, withdraw = false, _new = false, cleared = false;
-//vector<Checking> checking;
-//vector<Savings> savings;
-//vector<HELOC> heloc;
+vector<Checking> checking;
+vector<Savings> savings;
+vector<HELOC> heloc;
 main() {
 	ErrorFunction();
 	Window window;
@@ -139,24 +140,24 @@ drawBackground() {
 			  TextOut(screen, 0, 65, L"Edit", 4);
 			  if (onHELOC == true) {
 				  int index = 0;
-				  //for (HELOC h : heloc) {
-					  //string str = to_string(index + h.getBal());
-					  //TextOut(screen, 255, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
-				  //}
+				  for (HELOC h : heloc) {
+					  string str = to_string(index + h.getBal());
+					  TextOut(screen, 255, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
+				  }
 			  }
 			  else if (onSavings == true) {
 				  int index = 0;
-				  //for (Savins s : savings) {
-					  //string str = to_string(index + s.getBal());
-					  //TextOut(screen, 255, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
-				  //}
+				  for (Savings s : savings) {
+					  string str = to_string(index + s.getBal());
+					  TextOut(screen, 255, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
+				  }
 			  }
 			  else if (onChecking == true) {
 				  int index = 0;
-				  //for (Checking c : checking) {
-					  //string str = to_string(index + c.getBal());
-					  //TextOut(screen, 255, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
-				  //}
+				  for (Checking c : checking) {
+					  string str = to_string(index + c.getBal());
+					  TextOut(screen, 255, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
+				  }
 			  }
 		  }
 		  else if (edit == true) {
@@ -170,24 +171,24 @@ drawBackground() {
 			  TextOut(screen, 0, 135, L"New", 3);
 			  if (onHELOC == true) {
 				  int index = 0;
-				  //for (HELOC h : heloc) {
-					  //string str = to_string(index + h.getBal());
-					  //TextOut(screen, 255, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
-				  //}
+				  for (HELOC h : heloc) {
+					  string str = to_string(index + h.getBal());
+					  TextOut(screen, 255, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
+				  }
 			  }
 			  else if (onSavings == true) {
 				  int index = 0;
-				  //for (Savins s : savings) {
-					  //string str = to_string(index + s.getBal());
-					  //TextOut(screen, 255, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
-				  //}
+				  for (Savings s : savings) {
+					  string str = to_string(index + s.getBal());
+					  TextOut(screen, 255, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
+				  }
 			  }
 			  else if (onChecking == true) {
 				  int index = 0;
-				  //for (Checking c : checking) {
-					  //string str = to_string(index + c.getBal());
-					  //TextOut(screen, 255, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
-				  //}
+				  for (Checking c : checking) {
+					  string str = to_string(index + c.getBal());
+					  TextOut(screen, 255, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
+				  }
 			  }
 		  }
 		  else if (withdraw == true || deposit == true) {
@@ -203,34 +204,34 @@ drawBackground() {
 				  }
 				  try {
 					  int cur = atoi(temp.c_str());
-					  if (onChecking == true /*&& cur < checking.size()*/) {
+					  if (onChecking == true && cur < checking.size()) {
 						  if (withdraw == true) {
-							  //string str = checking[cur].Transaction(-100)
-							  //TextOut(screen, 200, 100, wstring(str.begin(), str.end).c_str(), str.length());
+							  string str = checking[cur].Transaction(-100);
+							  TextOut(screen, 200, 100, wstring(str.begin(), str.end()).c_str(), str.length());
 						  }
 						  else {
-							  //string str = checking[cur].Transaction(100)
-							  //TextOut(screen, 200, 100, wstring(str.begin(), str.end).c_str(), str.length());
+							  string str = checking[cur].Transaction(100);
+							  TextOut(screen, 200, 100, wstring(str.begin(), str.end()).c_str(), str.length());
 						  }
 					  }
-					  else if (onSavings == true /*&& cur < savings.size()*/) {
+					  else if (onSavings == true && cur < savings.size()) {
 						  if (withdraw == true) {
-							  //string str = savings[cur].Transaction(-100)
-							  //TextOut(screen, 200, 100, wstring(str.begin(), str.end).c_str(), str.length());
+							  string str = savings[cur].Transaction(-100);
+							  TextOut(screen, 200, 100, wstring(str.begin(), str.end()).c_str(), str.length());
 						  }
 						  else {
-							  //string str = savings[cur].Transaction(100)
-							  //TextOut(screen, 200, 100, wstring(str.begin(), str.end).c_str(), str.length());
+							  string str = savings[cur].Transaction(100);
+							  TextOut(screen, 200, 100, wstring(str.begin(), str.end()).c_str(), str.length());
 						  }
 					  }
-					  else if (onHELOC == true /*&& cur < heloc.size()*/) {
+					  else if (onHELOC == true && cur < heloc.size()) {
 						  if (withdraw == true) {
-							  //string str = heloc[cur].Transaction(-100)
-							  //TextOut(screen, 200, 100, wstring(str.begin(), str.end).c_str(), str.length());
+							  string str = heloc[cur].Transaction(-100);
+							  TextOut(screen, 200, 100, wstring(str.begin(), str.end()).c_str(), str.length());
 						  }
 						  else {
-							  //string str = heloc[cur].Transaction(100)
-							  //TextOut(screen, 200, 100, wstring(str.begin(), str.end).c_str(), str.length());
+							  string str = heloc[cur].Transaction(100);
+							  TextOut(screen, 200, 100, wstring(str.begin(), str.end()).c_str(), str.length());
 						  }
 					  }
 				  }
@@ -241,16 +242,16 @@ drawBackground() {
 		  }
 		  else {
 			  if (onChecking == true) {
-				  //Checking c;
-				  //checking.push_back(c);
+				  Checking c;
+				  checking.push_back(c);
 			  }
 			  else if (onSavings == true) {
-				  //Savings s;
-				  //savings.push_back(s);
+				  Savings s;
+				  savings.push_back(s);
 			  }
 			  else if (onHELOC == true) {
-				  //HELOC h;
-				  //heloc.push_back(h);
+				  HELOC h;
+				  heloc.push_back(h);
 			  }
 		  }
 	  }
