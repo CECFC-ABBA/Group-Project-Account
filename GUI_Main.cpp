@@ -38,6 +38,12 @@ main() {
   background2.load("D:\\GRP_GUI\\Background2.bmp", background_width, background_height, GetInstance());
   backgrounds.push_back(background2);
 	window.__INIT__(GetInstance(), width, height, name, pos, style); //Note that cursor-changing is supported, just needs different parameters
+	Checking c;
+	Savings s;
+	HELOC h;
+	checking.push_back(c);
+	savings.push_back(s);
+	heloc.push_back(h);
 	do {
 		//Main Loop Here:
 
@@ -130,9 +136,10 @@ drawBackground() {
 		  TextOut(screen, 220, 300, L"Savings", 8);
 	  }
 	  else {
+		  backgrounds[0].draw(screen, 0, 0);
 		  if (edit == false && withdraw == false && deposit == false) {
 			  backgrounds[4].draw(screen, 0, 0);
-			  TextOut(screen, 225, 15, L"------------", 13);
+			  TextOut(screen, 225, 20, L"------------", 13);
 			  TextOut(screen, 225, 10, L"Accounts:", 10);
 			  backgrounds[1].draw(screen, 0, 0);
 			  TextOut(screen, 0, 10, L"Back", 4);
@@ -141,22 +148,22 @@ drawBackground() {
 			  if (onHELOC == true) {
 				  int index = 0;
 				  for (HELOC h : heloc) {
-					  string str = to_string(index + h.getBal());
-					  TextOut(screen, 255, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
+					  string str = "$" + to_string(index + h.getBal());
+					  TextOut(screen, 230, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
 				  }
 			  }
 			  else if (onSavings == true) {
 				  int index = 0;
 				  for (Savings s : savings) {
-					  string str = to_string(index + s.getBal());
-					  TextOut(screen, 255, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
+					  string str = "$" + to_string(index + s.getBal());
+					  TextOut(screen, 230, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
 				  }
 			  }
 			  else if (onChecking == true) {
 				  int index = 0;
 				  for (Checking c : checking) {
-					  string str = to_string(index + c.getBal());
-					  TextOut(screen, 255, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
+					  string str = "$" + to_string(index + c.getBal());
+					  TextOut(screen, 230, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
 				  }
 			  }
 		  }
@@ -172,22 +179,22 @@ drawBackground() {
 			  if (onHELOC == true) {
 				  int index = 0;
 				  for (HELOC h : heloc) {
-					  string str = to_string(index + h.getBal());
-					  TextOut(screen, 255, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
+					  string str = "$" + to_string(index + h.getBal());
+					  TextOut(screen, 230, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
 				  }
 			  }
 			  else if (onSavings == true) {
 				  int index = 0;
 				  for (Savings s : savings) {
-					  string str = to_string(index + s.getBal());
-					  TextOut(screen, 255, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
+					  string str = "$" + to_string(index + s.getBal());
+					  TextOut(screen, 230, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
 				  }
 			  }
 			  else if (onChecking == true) {
 				  int index = 0;
 				  for (Checking c : checking) {
-					  string str = to_string(index + c.getBal());
-					  TextOut(screen, 255, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
+					  string str = "$" + to_string(index + c.getBal());
+					  TextOut(screen, 230, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
 				  }
 			  }
 		  }
@@ -253,6 +260,7 @@ drawBackground() {
 				  HELOC h;
 				  heloc.push_back(h);
 			  }
+			  _new = false;
 		  }
 	  }
 }
