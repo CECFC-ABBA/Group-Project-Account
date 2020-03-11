@@ -5,19 +5,35 @@ Savings Class Implementations
 #include <string>
 
 Savings::Savings() {
-	//Initialize bal, months, and interest to something besides a blank value (you cannot do bal = getBal())
-	bal = getBal();
-	months = getMonths();
-	interest = getIntr();
+	bal = 5000;
+	months = 18;
+	interest = 1.75;
 	maxWithdraw = 3;
 }
 
 Savings::~Savings() {
-	//Create destructor:
+	bal = 0;
+	months = 0;
+	interest = 0;
+	maxWithdraw = 3;
+}
+double Savings::setBal() {
+	cout << "What is your savings account balance? $";
+	cin >> bal;
+	bal = 0;
+	return bal;
+}
 
+double Savings::setMonths(){
+	cout << "How many months has your account been active? ";
+	cin >> months;
+	months = 0;
+	return months;
 }
 
 void Savings::Print() {
+	//setBal(); //grey this function to use defaults
+	//setMonths(); //same as above
 	int years = months%12;
 	cout << "The current balance of " << accountname << " is: " << bal << endl;
 	cout << accountname << " has been active for " << years << " years and " << months << " months." << endl;
@@ -30,11 +46,26 @@ void Savings::Interest() {
 	cout << "Account balance with interest is: " << bal << endl;
 }
 
+string Savings::fixDouble(string doubl) {
+	int index = static_cast<int>(doubl.length() - 1);
+	for (int i = 0; i < static_cast<int>(doubl.length()); i++) {
+		if (doubl[static_cast<int>(doubl.length() - 1) - i] == '0') {
+			index--;
+		}
+		else {
+			break;
+		}
+	}
+	doubl = doubl.substr(0, index + 1);
+	return doubl;
+}
+
 string Savings::Transaction(double amt) {
-	double withdrawl = 0, tbal;
+	double withdrawl = 0, tbal = 0;
 	bool con = false;
 	char e = 'a';
-	int choice, w = 0, fee = 75;
+	int choice = 0, w = 0, fee = 75;
+	bool error = false;
 	Print();
 	Interest();
 	if (amt < 0) choice = 1;
@@ -43,13 +74,14 @@ string Savings::Transaction(double amt) {
 	case 1:
 		do {
 			withdrawl = amt / -1;
+			error = false;
 			if (w > 3) tbal = (bal -= fee);
-			if (withdrawl > bal || withdrawl > tbal) {
-				cout << "Insuffient funds. Enter another value or E to exit." << endl;
-				cin >> e;
+			if ((withdrawl > bal) || (withdrawl > tbal)) {
+				cout << "Insuffient funds. Enter another value." << endl;
+				error = true;
+				cin >> withdrawl;
 			}
-			if (!(e == 'E') || !(e == 'e')) con = true;
-		} while ((con == true) || (w <= maxWithdraw));
+		} while (error == true);
 		bal -= withdrawl;
 		if (w > 3) {
 			bal -= fee;
@@ -68,6 +100,7 @@ string Savings::Transaction(double amt) {
 		break;
 	}
 	string trans = to_string(bal);
+	fixDouble(trans);
 	return trans;
 }
 //Anela
