@@ -17,23 +17,23 @@ Savings::~Savings() {
 	interest = 0;
 	maxWithdraw = 3;
 }
-double Savings::setBal()/* const*/ {
-	//cout << "What is your savings account balance? $";
-	//cin >> bal;
+double Savings::setBal() {
+	cout << "What is your savings account balance? $";
+	cin >> bal;
 	bal = 0;
 	return bal;
 }
 
-double Savings::setMonths()/* const*/ {
-	//cout << "How many months has your account been active? ";
-	//cin >> months;
+double Savings::setMonths(){
+	cout << "How many months has your account been active? ";
+	cin >> months;
 	months = 0;
 	return months;
 }
 
 void Savings::Print() {
-	setBal(); //grey this function to use defaults
-	setMonths(); //same as above
+	//setBal(); //grey this function to use defaults
+	//setMonths(); //same as above
 	int years = months%12;
 	cout << "The current balance of " << accountname << " is: " << bal << endl;
 	cout << accountname << " has been active for " << years << " years and " << months << " months." << endl;
