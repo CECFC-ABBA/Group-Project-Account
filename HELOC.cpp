@@ -1,4 +1,4 @@
-/*HELOC.cpp
+/*HELOC.cpp :: Experimental code
 * ABBA group memeber(s): Brendan McCleery, Anela Gallegos
 * 3 March 2020
 *	Purpose:
@@ -16,14 +16,15 @@
 using namespace std;
 
 HELOC::HELOC() {
-    double houseval, mortgage;
+    double houseval, mortgage, monthTFrame, payment;
     cout << "What is the current value of your property? ";
     cin >> houseval;
     cout << "What is your current mortgage? ";
     cin >> mortgage;
-    months = 0;
     equity = houseval - mortgage;
     loan = equity - (equity * .2);
+    monthTFrame = month * year;
+    payment = Loan - (monthTFrane );
 
 }
 
@@ -31,12 +32,12 @@ HELOC::~HELOC() {
 
 }
 
-double HELOC::Calculate(double) {
-
+Void HELOC::setLoan(double SetLoan) {
+    loan = setLoan
 }
 
 string HELOC::Transaction(double amt) {
-    char user, input, temp, /*userChoice, */choice; 
+    char user, input, temp, /*userChoice, */choice;
     cout << "Do you have an existing HELOC?\n (1) (BETA)Yes (2) No\nInput 1 or 2 then [Enter]\n"
         cin >> user;
     if (user = 1) choice = 1;
@@ -47,14 +48,14 @@ string HELOC::Transaction(double amt) {
         case 1:
             //User Has existing HELOC
             cout << "What would you like to view from your HELOC?\n(1) Remaining Payment: \n"
-                << "(2) Current interest: " 
-                /*\n(3) Home Equity:*/<< endl;
+                << "(2) Current interest: "
+                /*\n(3) Home Equity:*/ << endl;
 
             cin >> user;
 
             if (user = 1) {
                 cout << "The Remaining payment in your HELOC is " << /*add variable*/ << endl;
-                
+
             }
 
             if (user = 2) {
@@ -105,14 +106,14 @@ string HELOC::Transaction(double amt) {
                 cout << "Currently you will owe $" << amt << "." << endl;
 
             }
-    /***********Changed in master brach************/
+
             break;
         case 3:
             //There isn't a third choice
-    /***********************************************/
+
 
         }
 
     string trans = to_string(loan);
     return trans;
-}
+    
