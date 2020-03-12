@@ -10,7 +10,7 @@ Checking::Checking() {
 
 /*Destructor for Checking*/
 Checking::~Checking() {
-	delete[]this;
+	//delete[]this;
 	/*delete[]feeCost;
 	delete[]balance;*/
 }
@@ -38,12 +38,13 @@ string Checking::Transaction(double amt) {
 	if (fee < amt) {
 		bal = bal - fee;
 		excess = 0;
-		checkingOutput = (Your account has a sufficent balance. You have $" + fixDouble(to_string(bal)) + " remaining after the $" << fee << " cost." << endl);
+		checkingOutput = "Your account has a sufficent balance. You have $" + fixDouble(to_string(bal)) + " remaining after the $" + fixDouble(to_string(fee)) + " cost.\n";
 	}
 	else {
 		excess = bal - fee;
 		amt = 0;
-		overdraft = (excess - overdraftCost)*-1;
-		checkingOutput = ("There is not enough money in your account. An overdraft will occur." << endl << "Your account has been reduced to $0 and you owe the bank $" << overdraft << "." << endl);
+		overdraft = (excess - overdraftCost) * -1;
+		checkingOutput = "There is not enough money in your account. An overdraft will occur.\nYour account has been reduced to $0 and you owe the bank $" + fixDouble(to_string(overdraft)) + ".\n";
+	}
 	return checkingOutput;
 };
