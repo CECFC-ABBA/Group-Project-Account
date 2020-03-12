@@ -1,4 +1,4 @@
-/*HELOC.cpp :: Experimental code
+/*HELOC.cpp :: Experimental Code
 * ABBA group memeber(s): Brendan McCleery, Anela Gallegos
 * 3 March 2020
 *	Purpose:
@@ -16,15 +16,15 @@
 using namespace std;
 
 HELOC::HELOC() {
-    double houseval, mortgage, monthTFrame, payment;
+    double houseval, mortgage, monthTFrame, rPayment;
     cout << "What is the current value of your property? ";
     cin >> houseval;
     cout << "What is your current mortgage? ";
     cin >> mortgage;
     equity = houseval - mortgage;
     loan = equity - (equity * .2);
-    monthTFrame = month * year;
-    payment = Loan - (monthTFrane );
+    monthTFrame = 12 * year;
+    rPayment = Loan - (monthTFrame * );
 
 }
 
@@ -33,8 +33,13 @@ HELOC::~HELOC() {
 }
 
 Void HELOC::setLoan(double SetLoan) {
-    loan = setLoan
+    loan = setLoan;
 }
+
+Void HELOC::setYear(double SetYear) {
+    year = setYear;
+}
+
 
 string HELOC::Transaction(double amt) {
     char user, input, temp, /*userChoice, */choice;
@@ -54,7 +59,7 @@ string HELOC::Transaction(double amt) {
             cin >> user;
 
             if (user = 1) {
-                cout << "The Remaining payment in your HELOC is " << /*add variable*/ << endl;
+                cout << "The Remaining payment in your HELOC is " << payment << endl;
 
             }
 
