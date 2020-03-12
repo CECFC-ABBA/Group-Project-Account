@@ -29,7 +29,7 @@ HELOC::~HELOC() {
 }
 
 Void HELOC::setLoan(double SetLoan) {
-    loan = setLoan
+    loan = setLoan;
 }
 
 string HELOC::Transaction(double amt) {
