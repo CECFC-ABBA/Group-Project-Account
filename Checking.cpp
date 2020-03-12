@@ -5,7 +5,7 @@
 /*Constructor for Checking*/
 Checking::Checking() {
 	bal = 0;
-	fee = 100;
+	fee = 0;
 };
 
 /*Destructor for Checking*/
