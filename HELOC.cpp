@@ -105,11 +105,11 @@ string HELOC::Transaction(double amt) {
                 cout << "Currently you will owe $" << amt << "." << endl;
 
             }
-    //***********Changed in master brach************
+    /***********Changed in master brach************/
             break;
         case 3:
             //There isn't a third choice
-    //***********************************************
+    /***********************************************/
 
         }
 
