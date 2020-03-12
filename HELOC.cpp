@@ -63,7 +63,7 @@ string HELOC::Transaction(double amt) {
     case 2:
         //User is creating a HELOC(maybe?)
         cout << "Your maximum loan is worth: $" << loan << endl;
-        cout << "Would you like to activate your HELOC?" << endl; //assuming user is eligible
+        cout << "Would you like to activate your HELOC? (y/n)" << endl; //assuming user is eligible
         cin >> user;
         if ((user == 'Y') || (user == 'y')) {
             cout << "For the first ten years of your loan, you will owe " << intr1 << "%." << endl;
