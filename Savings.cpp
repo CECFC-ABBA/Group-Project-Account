@@ -18,6 +18,9 @@ Savings::~Savings() {
 	interest = 0;
 	maxWithdraw = 3;
 }
+void Savings::setBal(double num) {
+	bal = num;
+}
 
 void Savings::Interest() {
 	double add = bal * interest;
