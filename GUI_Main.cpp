@@ -1,4 +1,4 @@
-//I didn't have time to make the button click check perfect
+//I didn't have time to make the button click check perfect yet
 #include "Graphics.h"
 #include "HELOC.h"
 #include "Checking.h"
@@ -9,6 +9,7 @@
 vector<Background> backgrounds; //Backgrounds must be global variables
 vector<char> chars;
 bool onFirstScrn = true, onSavings = false, onChecking = false, onHELOC = false, edit = false, deposit = false, withdraw = false, _new = false, cleared = false;
+int accountSelected = -1, numAccts = -1;
 vector<Checking> checking;
 vector<Savings> savings;
 vector<HELOC> heloc;
@@ -41,12 +42,31 @@ main() {
 	Checking c;
 	Savings s;
 	HELOC h;
+	c.setBal(0);
+	s.setBal();
+	h.setBal(0);
 	checking.push_back(c);
 	savings.push_back(s);
 	heloc.push_back(h);
 	do {
-		//Main Loop Here:
-
+		if (_new == true) {
+			if (onChecking == true) {
+				Checking c;
+				c.setBal(0);
+				checking.push_back(c);
+			}
+			else if (onSavings == true) {
+				Savings s;
+				s.setBal();
+				savings.push_back(s);
+			}
+			else if (onHELOC == true) {
+				HELOC h;
+				h.setBal(0);
+				heloc.push_back(h);
+			}
+			_new = false, edit = true;
+		}
 	} while (window.update() == 0);
 	return 0;
 }
@@ -71,7 +91,7 @@ onMove() {
 }
 onCharPress() {
 	char keyPressed = GetCharPressed();
-	chars.push_back(keyPressed);
+	DO_NOTHING;
 }
 onResize() {
 	DO_NOTHING;
@@ -86,34 +106,47 @@ onLClick() {
 		GetWindowRect(hWnd, &rc);
 		mouse_pos.x -= rc.left;
 		mouse_pos.y -= rc.top;
-		if (onFirstScrn == true) {
-			if (mouse_pos.x >= 200 && mouse_pos.x <= 300) {
-				if (mouse_pos.y >= 225 && mouse_pos.y <= 275) {
-					onFirstScrn = false, onSavings = false, onChecking = true, onHELOC = false;
+		if (deposit == true || withdraw == true) {
+			if (mouse_pos.y >= 45) {
+				int index = round((mouse_pos.y - 45) / 15);
+				if (index < numAccts) {
+					accountSelected = index;
 				}
-				else if (mouse_pos.y >= 165 && mouse_pos.y <= 215) {
-					onFirstScrn = false, onSavings = false, onChecking = false, onHELOC = true;
-				}
-				else if (mouse_pos.y >= 285 && mouse_pos.y <= 335) {
-					onFirstScrn = false, onSavings = true, onChecking = false, onHELOC = false;
+				else {
+					accountSelected = 0;
 				}
 			}
 		}
-		else if (mouse_pos.x >= 0 && mouse_pos.x <= 100) {
-			if (mouse_pos.y >= 0 && mouse_pos.y <= 50) {
-				onFirstScrn = true, onChecking = false, onSavings = false, onHELOC = false, edit = false;
+		else {
+			if (onFirstScrn == true) {
+				if (mouse_pos.x >= 200 && mouse_pos.x <= 300) {
+					if (mouse_pos.y >= 225 && mouse_pos.y <= 275) {
+						onFirstScrn = false, onSavings = false, onChecking = true, onHELOC = false;
+					}
+					else if (mouse_pos.y >= 165 && mouse_pos.y <= 215) {
+						onFirstScrn = false, onSavings = false, onChecking = false, onHELOC = true;
+					}
+					else if (mouse_pos.y >= 285 && mouse_pos.y <= 335) {
+						onFirstScrn = false, onSavings = true, onChecking = false, onHELOC = false;
+					}
+				}
 			}
-			else if (mouse_pos.y >= 60 && mouse_pos.y <= 110 && edit == false) {
-				onFirstScrn = false, edit = true;
-			}
-			else if (mouse_pos.y >= 120 && mouse_pos.y <= 145 && edit == true) {
-				onFirstScrn = false, edit = false, withdraw = true;
-			}
-			else if (mouse_pos.y >= 60 && mouse_pos.y <= 110 && edit == true) {
-				onFirstScrn = false, edit = false, deposit = true;
-			}
-			else if (mouse_pos.y >= 155 && mouse_pos.y <= 180 && edit == true) {
-				onFirstScrn = false, edit = false, _new = true;
+			else if (mouse_pos.x >= 0 && mouse_pos.x <= 100) {
+				if (mouse_pos.y >= 0 && mouse_pos.y <= 50) {
+					onFirstScrn = true, onChecking = false, onSavings = false, onHELOC = false, edit = false;
+				}
+				else if (mouse_pos.y >= 60 && mouse_pos.y <= 110 && edit == false) {
+					onFirstScrn = false, edit = true;
+				}
+				else if (mouse_pos.y >= 120 && mouse_pos.y <= 145 && edit == true) {
+					onFirstScrn = false, edit = false, withdraw = true;
+				}
+				else if (mouse_pos.y >= 60 && mouse_pos.y <= 110 && edit == true) {
+					onFirstScrn = false, edit = false, deposit = true;
+				}
+				else if (mouse_pos.y >= 155 && mouse_pos.y <= 180 && edit == true) {
+					onFirstScrn = false, edit = false, _new = true;
+				}
 			}
 		}
 	}
@@ -137,130 +170,104 @@ drawBackground() {
 	  }
 	  else {
 		  backgrounds[0].draw(screen, 0, 0);
+		  if (onHELOC == true) {
+			  int index = 0;
+			  for (HELOC h : heloc) {
+				  string str = to_string(index) + ": $" + to_string(h.getBal());
+				  TextOut(screen, 220, 45 + 15 * index, wstring(str.begin(), str.end()).c_str(), str.length());
+				  index++;
+			  }
+		  }
+		  else if (onSavings == true) {
+			  int index = 0;
+			  for (Savings s : savings) {
+				  string str = to_string(index) + ": $" + to_string(s.getBal());
+				  TextOut(screen, 220, 45 + 15 * index, wstring(str.begin(), str.end()).c_str(), str.length());
+				  index++;
+			  }
+		  }
+		  else if (onChecking == true) {
+			  int index = 0;
+			  for (Checking c : checking) {
+				  string str = to_string(index) + ": $" + to_string(c.getBal());
+				  TextOut(screen, 220, 45 + 15 * index, wstring(str.begin(), str.end()).c_str(), str.length());
+				  index++;
+			  }
+		  }
+		  TextOut(screen, 225, 30, L"-----------------", 18);
+		  TextOut(screen, 225, 20, L"Accounts:", 10);
 		  if (edit == false && withdraw == false && deposit == false) {
 			  backgrounds[4].draw(screen, 0, 0);
-			  TextOut(screen, 225, 20, L"------------", 13);
-			  TextOut(screen, 225, 10, L"Accounts:", 10);
 			  backgrounds[1].draw(screen, 0, 0);
 			  TextOut(screen, 0, 10, L"Back", 4);
 			  backgrounds[2].draw(screen, 0, 35);
-			  TextOut(screen, 0, 65, L"Edit", 4);
-			  if (onHELOC == true) {
-				  int index = 0;
-				  for (HELOC h : heloc) {
-					  string str = "$" + to_string(index + h.getBal());
-					  TextOut(screen, 230, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
-				  }
-			  }
-			  else if (onSavings == true) {
-				  int index = 0;
-				  for (Savings s : savings) {
-					  string str = "$" + to_string(index + s.getBal());
-					  TextOut(screen, 230, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
-				  }
-			  }
-			  else if (onChecking == true) {
-				  int index = 0;
-				  for (Checking c : checking) {
-					  string str = "$" + to_string(index + c.getBal());
-					  TextOut(screen, 230, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
-				  }
-			  }
+			  TextOut(screen, 0, 45, L"Edit", 4);
 		  }
 		  else if (edit == true) {
 			  backgrounds[1].draw(screen, 0, 0);
 			  TextOut(screen, 0, 10, L"Back", 4);
-			  TextOut(screen, 225, 20, L"------------", 13);
-			  TextOut(screen, 225, 10, L"Accounts:", 10);
 			  backgrounds[2].draw(screen, 0, 35);
-			  TextOut(screen, 0, 65, L"Deposit $100", 13);
-			  TextOut(screen, 0, 100, L"Withdraw $100", 14);
-			  TextOut(screen, 0, 135, L"New", 3);
-			  if (onHELOC == true) {
-				  int index = 0;
-				  for (HELOC h : heloc) {
-					  string str = "$" + to_string(index + h.getBal());
-					  TextOut(screen, 230, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
-				  }
-			  }
-			  else if (onSavings == true) {
-				  int index = 0;
-				  for (Savings s : savings) {
-					  string str = "$" + to_string(index + s.getBal());
-					  TextOut(screen, 230, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
-				  }
-			  }
-			  else if (onChecking == true) {
-				  int index = 0;
-				  for (Checking c : checking) {
-					  string str = "$" + to_string(index + c.getBal());
-					  TextOut(screen, 230, 35 + 10 * index, wstring(str.begin(), str.end()).c_str(), str.length());
-				  }
-			  }
+			  TextOut(screen, 0, 45, L"Deposit $100", 13);
+			  TextOut(screen, 0, 80, L"Withdraw $100", 14);
+			  TextOut(screen, 0, 115, L"New", 3);
 		  }
 		  else if (withdraw == true || deposit == true) {
-			  TextOut(screen, 255, 0, L"Enter Account Number:", 22);
-			  if (cleared == false) {
-				  chars.clear();
-				  cleared = true;
-			  }
-			  else {
-				  string temp;
-				  for (char c : chars) {
-					  temp.push_back(c);
-				  }
-				  try {
-					  int cur = atoi(temp.c_str());
-					  if (onChecking == true && cur < checking.size()) {
-						  if (withdraw == true) {
-							  string str = checking[cur].Transaction(-100);
-							  TextOut(screen, 200, 100, wstring(str.begin(), str.end()).c_str(), str.length());
-						  }
-						  else {
-							  string str = checking[cur].Transaction(100);
-							  TextOut(screen, 200, 100, wstring(str.begin(), str.end()).c_str(), str.length());
-						  }
-					  }
-					  else if (onSavings == true && cur < savings.size()) {
-						  if (withdraw == true) {
-							  string str = savings[cur].Transaction(-100);
-							  TextOut(screen, 200, 100, wstring(str.begin(), str.end()).c_str(), str.length());
-						  }
-						  else {
-							  string str = savings[cur].Transaction(100);
-							  TextOut(screen, 200, 100, wstring(str.begin(), str.end()).c_str(), str.length());
-						  }
-					  }
-					  else if (onHELOC == true && cur < heloc.size()) {
-						  if (withdraw == true) {
-							  string str = heloc[cur].Transaction(-100);
-							  TextOut(screen, 200, 100, wstring(str.begin(), str.end()).c_str(), str.length());
-						  }
-						  else {
-							  string str = heloc[cur].Transaction(100);
-							  TextOut(screen, 200, 100, wstring(str.begin(), str.end()).c_str(), str.length());
-						  }
-					  }
-				  }
-				  catch (exception ex) {
-					  chars.clear();
-				  }
-			  }
-		  }
-		  else {
 			  if (onChecking == true) {
-				  Checking c;
-				  checking.push_back(c);
+				  numAccts = checking.size();
 			  }
 			  else if (onSavings == true) {
-				  Savings s;
-				  savings.push_back(s);
+				  numAccts = savings.size();
 			  }
 			  else if (onHELOC == true) {
-				  HELOC h;
-				  heloc.push_back(h);
+				  numAccts = heloc.size();
 			  }
-			  _new = false;
+			  TextOut(screen, 230, 0, L"Click on target account:", 25);
+			  if (accountSelected > -1) {
+				  if (onChecking == true) {
+					  if (withdraw == true) {
+						  string str = checking[accountSelected].Transaction(-100);
+						  TextOut(screen, 230, 300, wstring(str.begin(), str.end()).c_str(), str.length());
+						  Sleep(1000);
+						  withdraw = false, edit = true;
+					  }
+					  else {
+						  string str = checking[accountSelected].Transaction(100);
+						  TextOut(screen, 230, 300, wstring(str.begin(), str.end()).c_str(), str.length());
+						  Sleep(1000);
+						  deposit = false, edit = true;
+					  }
+				  }
+				  else if (onSavings == true) {
+					  if (withdraw == true) {
+						  string str = savings[accountSelected].Transaction(-100);
+						  TextOut(screen, 230, 300, wstring(str.begin(), str.end()).c_str(), str.length());
+						  Sleep(1000);
+						  withdraw = false, edit = true;
+					  }
+					  else {
+						  string str = savings[accountSelected].Transaction(100);
+						  TextOut(screen, 230, 300, wstring(str.begin(), str.end()).c_str(), str.length());
+						  Sleep(1000);
+						  deposit = false, edit = true;
+					  }
+				  }
+				  else if (onHELOC == true) {
+					  if (withdraw == true) {
+						  string str = heloc[accountSelected].Transaction(-100);
+						  TextOut(screen, 230, 300, wstring(str.begin(), str.end()).c_str(), str.length());
+						  Sleep(1000);
+						  withdraw = false, edit = true;
+					  }
+					  else {
+						  string str = heloc[accountSelected].Transaction(100);
+						  TextOut(screen, 230, 300, wstring(str.begin(), str.end()).c_str(), str.length());
+						  Sleep(1000);
+						  deposit = false, edit = true;
+					  }
+				  }
+				  accountSelected = -1;
+				  numAccts = -1;
+			  }
 		  }
 	  }
 }
