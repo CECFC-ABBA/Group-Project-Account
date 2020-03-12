@@ -8,6 +8,7 @@ private:
 public:
 	Savings();
 	~Savings();
+	void setBal(double);
 	void Interest();
 	string fixDouble(string);
 	string Transaction(double) final;
