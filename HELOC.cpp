@@ -12,6 +12,8 @@
 
 #include "HELOC.h"
 #include <string>
+#include <iostream>
+using namespace std;
 
 HELOC::HELOC() {
     double houseval, mortgage;
@@ -22,6 +24,7 @@ HELOC::HELOC() {
     months = 0;
     equity = houseval - mortgage;
     loan = equity - (equity * .2);
+
 }
 
 HELOC::~HELOC() {
@@ -33,22 +36,24 @@ double HELOC::Calculate(double) {
 }
 
 string HELOC::Transaction(double amt) {
-    char user, input, temp, /*userChoice, */choice;
-    cout << "Do you have an existing HELOC?\n (1) Yes (2) No\nInput 1 or 2 then [Enter]\n"
+    char user, input, temp, /*userChoice, */choice; 
+    cout << "Do you have an existing HELOC?\n (1) (BETA)Yes (2) No\nInput 1 or 2 then [Enter]\n"
         cin >> user;
     if (user = 1) choice = 1;
     if (user = 2) choice = 2;
     //if (user != 1 || user != 2) choice = 3;
-    else if (choice = 3);
+    else if (choice = 3;)
         switch (choice) {
         case 1:
             //User Has existing HELOC
             cout << "What would you like to view from your HELOC?\n(1) Remaining Payment: \n"
-                << "(2) Current interest: \n(3) Home Equity:" << endl;
+                << "(2) Current interest: " 
+                /*\n(3) Home Equity:*/<< endl;
+
             cin >> user;
 
             if (user = 1) {
-                cout << "The Remaining payment in your HELOC is " << /**/ << endl;
+                cout << "The Remaining payment in your HELOC is " << /*add variable*/ << endl;
                 
             }
 
@@ -56,12 +61,17 @@ string HELOC::Transaction(double amt) {
                 cout << "The current interest on your HELOC is " << intr << endl;
 
             }
-
+            /*
             //May not be needed
             if (user = 3) {
                 cout << "The current value of your home equity is? " << equity << endl;
 
+            }*/
+
+            else {
+                cout << "*ERROR* That isn't an option!"
             }
+            break;
 
         case 2:
             //User is creating a HELOC(maybe?)
@@ -93,12 +103,16 @@ string HELOC::Transaction(double amt) {
                 cout << "You have " << loan << " remaining." << endl;
                 amt* intr1;
                 cout << "Currently you will owe $" << amt << "." << endl;
-            }
 
+            }
+    //***********Changed in master brach************
+            break;
         case 3:
             //There isn't a third choice
+    //***********************************************
 
         }
+
     string trans = to_string(loan);
     return trans;
 }
