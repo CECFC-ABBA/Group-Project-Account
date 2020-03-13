@@ -9,7 +9,7 @@ typedef class Checking final : public Account {/*Typedef is being ignored by the
 	double intr, fee, bal, overDraft;
 public:
 	Checking();
-	~Checking();
+	//~Checking();
 	string Transaction(double) final;
 	double getOverDraft() const {
 		return overDraft;
