@@ -12,12 +12,12 @@ Savings::Savings() {
 	maxWithdraw = 3;
 }
 
-Savings::~Savings() {
+/*Savings::~Savings() {
 	bal = 0;
 	months = 0;
 	interest = 0;
 	maxWithdraw = 3;
-}
+}*/
 void Savings::setBal(double num) {
 	bal = num;
 }
