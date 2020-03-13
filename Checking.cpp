@@ -9,11 +9,11 @@ Checking::Checking() {
 };
 
 /*Destructor for Checking*/
-Checking::~Checking() {
+/*Checking::~Checking() {
 	//delete[]this;
 	/*delete[]feeCost;
 	delete[]balance;*/
-}
+}*/
 
 
 string fixDouble(string doubl) {
