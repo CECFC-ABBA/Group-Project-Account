@@ -24,9 +24,9 @@ HELOC::HELOC() {
     loan = equity - (equity * .2);
 }
 
-HELOC::~HELOC() {
+/*HELOC::~HELOC() {
 
-}
+}*/
 
 Void HELOC::setLoan(double SetLoan) {
     loan = setLoan;
