@@ -4,9 +4,9 @@ Account::Account() {
   
 }
 
-Account::~Account() {
+/*Account::~Account() {
  //delete[]this;
-}
+}*/
 
 void Account::setBal(double new_bal) {
   bal = new_bal;
