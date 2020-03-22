@@ -33,7 +33,7 @@
 		double months = 0;
 
 	public:
-		HELOC();
+		//HELOC();
 		//~HELOC();
 		double getCredit() const {
 			return credit;
