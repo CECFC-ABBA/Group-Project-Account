@@ -1,8 +1,8 @@
 #include "Account.h"
 
-Account::Account() {
+/*Account::Account() {
   
-}
+}*/
 
 /*Account::~Account() {
  //delete[]this;
