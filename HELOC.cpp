@@ -13,7 +13,7 @@
 #include "HELOC.h"
 #include <string>
 
-HELOC::HELOC() {
+/*HELOC::HELOC() {
     double houseval = 0, mortgage = 0;
     cout << "What is the current value of your property? ";
     cin >> houseval;
@@ -22,14 +22,14 @@ HELOC::HELOC() {
     months = 0;
     equity = houseval - mortgage;
     loan = equity - (equity * .2);
-}
+}*/
 
 /*HELOC::~HELOC() {
 
 }*/
 
-Void HELOC::setLoan(double SetLoan) {
-    loan = setLoan;
+void HELOC::setLoan(double SetLoan) {
+    loan = SetLoan;
 }
 
 string HELOC::Transaction(double amt) {
