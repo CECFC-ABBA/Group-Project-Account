@@ -7,7 +7,7 @@ typedef class Account {
 	double fee;
 	double months;
 public:
-	Account(): bal(0);
+	//Account(): bal(0);
 	//virtual ~Account();
 	double getBal() const {
 		return bal;
