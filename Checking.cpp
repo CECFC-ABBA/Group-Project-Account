@@ -12,7 +12,7 @@ Checking::Checking() {
 /*Checking::~Checking() {
 	//delete[]this;
 	/*delete[]feeCost;
-	delete[]balance;*/
+	delete[]balance;* /
 }*/
 
 
@@ -32,19 +32,18 @@ string fixDouble(string doubl) {
 
 /*Code for determining if the account has the money to handle a fee and reducing the balance if so*/
 string Checking::Transaction(double amt) {
-	bal+=amt;
-	double overdraft, excess, overdraftCost = 35.00;
+	bal += amt;
+	double overdraft, excess;
 	string checkingOutput;
 	if (fee < amt) {
-		bal = bal - fee;
 		excess = 0;
-		checkingOutput = "Your account has a sufficent balance. You have $" + fixDouble(to_string(bal)) + " remaining after the $" + fixDouble(to_string(fee)) + " cost.\n";
+		checkingOutput = "Your account has a sufficent balance. You have $" + fixDouble(to_string(bal)) + ".";
 	}
 	else {
-		excess = bal - fee;
+		excess = bal;
 		amt = 0;
-		overdraft = (excess - overdraftCost) * -1;
-		checkingOutput = "There is not enough money in your account. An overdraft will occur.\nYour account has been reduced to $0 and you owe the bank $" + fixDouble(to_string(overdraft)) + ".\n";
+		overdraft = 35 - excess;
+		checkingOutput = "There is not enough money in your account. An overdraft will occur. Your account has been reduced to $0 and you owe the bank $" + fixDouble(to_string(overdraft)) + ".\n";
 	}
 	return checkingOutput;
 };
