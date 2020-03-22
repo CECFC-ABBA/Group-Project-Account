@@ -1,7 +1,3 @@
-//I didn't have time to make the button click check perfect yet
-//HELOC is weird < temp fix didnt work
-//Savings needs temp fix to be set up
-//All of em need real transaction to work
 #include "Graphics.h"
 #include "HELOC.h"
 #include "Checking.h"
@@ -9,7 +5,7 @@
 #include <vector>
 #include <string>
 #ifdef _WIN32
-vector<Background> backgrounds; //Backgrounds must be global variables
+vector<Background> backgrounds;
 vector<char> chars;
 bool onFirstScrn = true, onSavings = false, onChecking = false, onHELOC = false, edit = false, deposit = false, withdraw = false, _new = false, cleared = false, prnt = false;
 string str = "";
@@ -23,18 +19,18 @@ main() {
 	POINT pos;
 	int style, width, height, background_width, background_height;
 	const char* name = "Bank Accounts";
-	style = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE | WS_MINIMIZEBOX; //Set this
-	width = 500; //Let's try a 500x500 window
+	style = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_VISIBLE | WS_MINIMIZEBOX;
+	width = 500;
 	height = 500;
-	pos.x = 500; //Start near the centre of the screen
-	pos.y = 500; //
+	pos.x = 500;
+	pos.y = 500;
   Background background, background2;
-	background_width = 500; //Main background same size as screen
+	background_width = 500;
 	background_height = 500;
-	background.load("D:\\GRP_GUI\\Background.bmp", background_width, background_height, GetInstance()); //Must be a .bmp image file
+	background.load("D:\\GRP_GUI\\Background.bmp", background_width, background_height, GetInstance());
   backgrounds.push_back(background);
   Background button_one;
-  int button_width = 100; //Try 100x50
+  int button_width = 100;
   int button_height = 50;
   button_one.load("D:\\GRP_GUI\\Button1.bmp", button_width, button_height, GetInstance());
   backgrounds.push_back(button_one);
@@ -42,12 +38,12 @@ main() {
   backgrounds.push_back(button_one);
   background2.load("D:\\GRP_GUI\\Background2.bmp", background_width, background_height, GetInstance());
   backgrounds.push_back(background2);
-	window.__INIT__(GetInstance(), width, height, name, pos, style); //Note that cursor-changing is supported, just needs different parameters
+	window.__INIT__(GetInstance(), width, height, name, pos, style);
 	Checking c;
 	Savings s;
 	HELOC h;
 	c.setBal(0);
-	s.setBal();
+	s.setBal(0);
 	h.setLoan(0);
 	checking.push_back(c);
 	savings.push_back(s);
@@ -61,7 +57,7 @@ main() {
 			}
 			else if (onSavings == true) {
 				Savings s;
-				s.setBal();
+				s.setBal(0);
 				savings.push_back(s);
 			}
 			else if (onHELOC == true) {
@@ -73,38 +69,41 @@ main() {
 		}
 		if (accountSelected > -1) {
 			if (onChecking == true) {
+				Checking temp = checking[accountSelected];
 				if (withdraw == true) {
-					str = checking[accountSelected].Transaction(-100);
-					//checking[accountSelected].setBal(checking[accountSelected].getBal() - 100);
+					str = temp.Transaction(-100);
+					checking[accountSelected].setBal(max(0, checking[accountSelected].getBal() - 100));
 					withdraw = false, edit = true;
 				}
 				else {
-					str = checking[accountSelected].Transaction(100);
-					//checking[accountSelected].setBal(checking[accountSelected].getBal() + 100);
+					str = temp.Transaction(100);
+					checking[accountSelected].setBal(max(0, checking[accountSelected].getBal() + 100));
 					deposit = false, edit = true;
 				}
 			}
 			else if (onSavings == true) {
+				Savings temp = savings[accountSelected];
 				if (withdraw == true) {
-					str = savings[accountSelected].Transaction(-100);
-					//savings[accountSelected].setBal(savings[accountSelected].getBal() - 100);
+					str = temp.Transaction(-100);
+					savings[accountSelected].setBal(max(0, savings[accountSelected].getBal() - 100));
 					withdraw = false, edit = true;
 				}
 				else {
-					str = savings[accountSelected].Transaction(100);
-					//savings[accountSelected].setBal(savings[accountSelected].getBal() + 100);
+					str = temp.Transaction(100);
+					savings[accountSelected].setBal(max(0, savings[accountSelected].getBal() + 100));
 					deposit = false, edit = true;
 				}
 			}
 			else if (onHELOC == true) {
+				HELOC temp = heloc[accountSelected];
 				if (withdraw == true) {
-					str = heloc[accountSelected].Transaction(-100);
-					//heloc[accountSelected].setLoan(heloc[accountSelected].getLoan() - 100);
+					str = temp.Transaction(-100);
+					heloc[accountSelected].setLoan(max(0, heloc[accountSelected].getLoan() - 100));
 					withdraw = false, edit = true;
 				}
 				else {
-					str = heloc[accountSelected].Transaction(100);
-					//heloc[accountSelected].setLoan(heloc[accountSelected].getLoan() + 100);
+					str = temp.Transaction(100);
+					heloc[accountSelected].setLoan(max(0, heloc[accountSelected].getLoan() + 100));
 					deposit = false, edit = true;
 				}
 			}
@@ -152,38 +151,48 @@ onLClick() {
 		mouse_pos.x -= rc.left;
 		mouse_pos.y -= rc.top;
 		if (deposit == true || withdraw == true) {
+			if (onChecking == true) {
+				numAccts = checking.size();
+			}
+			else if (onSavings == true) {
+				numAccts = savings.size();
+			}
+			else if (onHELOC == true) {
+				numAccts = heloc.size();
+			}
 			if (mouse_pos.y >= 45) {
 				int index = 0;
 				while (mouse_pos.y >= 45 + 15 * index) {
 					index++;
 				}
-				if (index < numAccts) {
-					accountSelected = index;
+				while (index > numAccts) {
+					index--;
 				}
-				else if (numAccts == 1) {
-					accountSelected = 0;
+				accountSelected = index - 3;
+				while (accountSelected < 0) {
+					accountSelected++;
 				}
 			}
 		}
 		else {
 			if (onFirstScrn == true) {
 				if (mouse_pos.x >= 200 && mouse_pos.x <= 300) {
-					if (mouse_pos.y >= 225 && mouse_pos.y <= 275) {
-						onFirstScrn = false, onSavings = false, onChecking = true, onHELOC = false;
-					}
-					else if (mouse_pos.y >= 165 && mouse_pos.y <= 215) {
+					if (mouse_pos.y >= 235 && mouse_pos.y <= 305) {
 						onFirstScrn = false, onSavings = false, onChecking = false, onHELOC = true;
 					}
-					else if (mouse_pos.y >= 285 && mouse_pos.y <= 335) {
+					else if (mouse_pos.y >= 175 && mouse_pos.y <= 225) {
+						onFirstScrn = false, onSavings = false, onChecking = true, onHELOC = false;
+					}
+					else if (mouse_pos.y >= 315 && mouse_pos.y <= 365) {
 						onFirstScrn = false, onSavings = true, onChecking = false, onHELOC = false;
 					}
 				}
 			}
-			else if (mouse_pos.x >= 0 && mouse_pos.x <= 100) {
-				if (mouse_pos.y >= 0 && mouse_pos.y <= 50) {
+			else if (mouse_pos.x >= 0 && mouse_pos.x <= 150) {
+				if (mouse_pos.y >= 0 && mouse_pos.y <= 55) {
 					onFirstScrn = true, onChecking = false, onSavings = false, onHELOC = false, edit = false;
 				}
-				else if (mouse_pos.y >= 55 && mouse_pos.y <= 80 && edit == false) {
+				else if (mouse_pos.y >= 65 && mouse_pos.y <= 115 && edit == false) {
 					onFirstScrn = false, edit = true;
 				}
 				else if (mouse_pos.y >= 105 && mouse_pos.y <= 130 && edit == true) {
@@ -209,7 +218,7 @@ drawBackground() {
 	HDC screen = get_DC();
 	if (prnt == true) {
 		backgrounds[0].draw(screen, 0, 0);
-		TextOut(screen, 230, 300, wstring(str.begin(), str.end()).c_str(), str.length());
+		TextOut(screen, 0, 300, wstring(str.begin(), str.end()).c_str(), str.length());
 		Sleep(1000);
 		prnt = false;
 		str = "";
@@ -229,24 +238,24 @@ drawBackground() {
 			if (onHELOC == true) {
 				int index = 0;
 				for (HELOC h : heloc) {
-					string str = to_string(index) + ": $" + to_string(h.getLoan());
-					TextOut(screen, 225, 45 + 15 * index, wstring(str.begin(), str.end()).c_str(), str.length() - 4);
+					string Str = to_string(index) + ": $" + to_string(h.getLoan());
+					TextOut(screen, 225, 45 + 15 * index, wstring(Str.begin(), Str.end()).c_str(), Str.length() - 4);
 					index++;
 				}
 			}
 			else if (onSavings == true) {
 				int index = 0;
 				for (Savings s : savings) {
-					string str = to_string(index) + ": $" + to_string(s.getBal());
-					TextOut(screen, 225, 45 + 15 * index, wstring(str.begin(), str.end()).c_str(), str.length() - 4);
+					string Str = to_string(index) + ": $" + to_string(s.getBal());
+					TextOut(screen, 225, 45 + 15 * index, wstring(Str.begin(), Str.end()).c_str(), Str.length() - 4);
 					index++;
 				}
 			}
 			else if (onChecking == true) {
 				int index = 0;
 				for (Checking c : checking) {
-					string str = to_string(index) + ": $" + to_string(c.getBal());
-					TextOut(screen, 225, 45 + 15 * index, wstring(str.begin(), str.end()).c_str(), str.length() - 4);
+					string Str = to_string(index) + ": $" + to_string(c.getBal());
+					TextOut(screen, 225, 45 + 15 * index, wstring(Str.begin(), Str.end()).c_str(), Str.length() - 4);
 					index++;
 				}
 			}
@@ -270,15 +279,6 @@ drawBackground() {
 				TextOut(screen, 0, 105, L"New", 3);
 			}
 			else if (withdraw == true || deposit == true) {
-				if (onChecking == true) {
-					numAccts = checking.size();
-				}
-				else if (onSavings == true) {
-					numAccts = savings.size();
-				}
-				else if (onHELOC == true) {
-					numAccts = heloc.size();
-				}
 				TextOut(screen, 230, 0, L"Click on target account:", 25);
 			}
 		}
