@@ -43,7 +43,7 @@ string Checking::Transaction(double amt) {
 		excess = bal;
 		amt = 0;
 		overdraft = 35 - excess;
-		checkingOutput = "There is not enough money in your account. An overdraft will occur. Your account has been reduced to $0 and you owe the bank $" + fixDouble(to_string(overdraft)) + ".\n";
+		checkingOutput = "There is not enough money in your account. An overdraft will occur.\nYour account has been reduced to $0 and you owe the bank $" + fixDouble(to_string(overdraft)) + ".\n";
 	}
 	return checkingOutput;
 };
