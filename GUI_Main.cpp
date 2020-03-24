@@ -131,6 +131,7 @@ main() {
 			prnt = true;
 		}
 	} while (window.update() == 0);
+	file.close();
 	return 0;
 }
 onPaint() {
