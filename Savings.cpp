@@ -12,16 +12,6 @@ Savings::Savings() {
 	maxWithdraw = 3;
 }
 
-/*Savings::~Savings() {
-	bal = 0;
-	months = 0;
-	interest = 0;
-	maxWithdraw = 3;
-}*/
-/*void Savings::setBal(double num) {
-	bal = num;
-}*/
-
 void Savings::Interest() {
 	double add = bal * interest;
 	bal += add;
@@ -42,21 +32,18 @@ string Savings::fixDouble(string doubl) {
 }
 
 string Savings::Transaction(double amt) {
-	double withdrawl = 0;
 	bool con = false;
-	char e = 'a';
 	int choice = 0, w = 0, fee = 75;
 	Interest();
 	if (amt < 0) choice = 1;
 	if (amt > 0) choice = 2;
 	switch (choice) {
 	case 1:
-		withdrawl = amt / -1;
-		bal -= withdrawl;
+		bal += amt;
+		w++;
 		if (w > 3) {
 			bal -= fee;
 		}
-		if (withdrawl > 0) w++;
 		break;
 	case 2:
 		bal += amt;
