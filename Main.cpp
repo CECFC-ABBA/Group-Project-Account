@@ -19,7 +19,15 @@ Febuary 27th 2020*/
 //Main:
 //Gets data from file, then outputs transaction results and final account specs. One account of each type.
 
+void showContents(fstream& file) {
+	string line;
+	while (file >> line) { cout << line << endl; }
+}
+
 int main(int argc, char** argv) {
+  dataFile.open("banking.txt", ios::out);
+  bool openFileIn(fstream&, string);
+	void showcontents(fstream&);
   Checking checking;
   Savings savings;
   HELOC heloc;
@@ -76,6 +84,9 @@ int main(int argc, char** argv) {
     cout << "Savings balance: " << savings.getBal() << endl;
     cout << "Checking balance: " << checking.getBal() << endl;
     cout << "HELOC balance: " << heloc.getBal() << endl;
+    dataFile << "Account" << i << "Savings balance: " << savings.getBal() << endl;
+    dataFile << "Account" << i << "Checking balance: " << checking.getBal() << endl;
+    dataFile << "Account" << i << " HELOC balance: " << heloc.getBal() << endl;
   }
   return 1;
 }
