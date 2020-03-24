@@ -3,7 +3,9 @@
 #include "Checking.h"
 #include "Savings.h"
 #include <vector>
+#include <sstream>
 #include <string>
+#include <fstream>
 #ifdef _WIN32
 vector<Background> backgrounds;
 vector<char> chars;
@@ -13,7 +15,9 @@ int accountSelected = -1, numAccts = -1;
 vector<Checking> checking;
 vector<Savings> savings;
 vector<HELOC> heloc;
+ofstream file;
 main() {
+	file.open("Log.txt");
 	ErrorFunction();
 	Window window;
 	POINT pos;
@@ -54,16 +58,19 @@ main() {
 				Checking c;
 				c.setBal(0);
 				checking.push_back(c);
+				file << "New checking account created\n";
 			}
 			else if (onSavings == true) {
 				Savings s;
 				s.setBal(0);
 				savings.push_back(s);
+				file << "New savings account created\n";
 			}
 			else if (onHELOC == true) {
 				HELOC h;
 				h.setLoan(0);
 				heloc.push_back(h);
+				file << "New HELOC account created\n";
 			}
 			_new = false, edit = true;
 		}
@@ -71,40 +78,52 @@ main() {
 			if (onChecking == true) {
 				Checking temp = checking[accountSelected];
 				if (withdraw == true) {
+					double cur_bal = checking[accountSelected].getBal();
 					str = temp.Transaction(-100);
 					checking[accountSelected].setBal(max(0, checking[accountSelected].getBal() - 100));
 					withdraw = false, edit = true;
+					file << "Checking " << accountSelected << ": " << cur_bal << " --> " << checking[accountSelected].getBal() << endl;
 				}
 				else {
+					double cur_bal = checking[accountSelected].getBal();
 					str = temp.Transaction(100);
 					checking[accountSelected].setBal(max(0, checking[accountSelected].getBal() + 100));
 					deposit = false, edit = true;
+					file << "Checking " << accountSelected << ": " << cur_bal << " --> " << checking[accountSelected].getBal() << endl;
 				}
 			}
 			else if (onSavings == true) {
 				Savings temp = savings[accountSelected];
 				if (withdraw == true) {
+					double cur_bal = savings[accountSelected].getBal();
 					str = temp.Transaction(-100);
 					savings[accountSelected].setBal(max(0, savings[accountSelected].getBal() - 100));
 					withdraw = false, edit = true;
+					file << "Savings " << accountSelected << ": " << cur_bal << " --> " << checking[accountSelected].getBal() << endl;
 				}
 				else {
+					double cur_bal = savings[accountSelected].getBal();
 					str = temp.Transaction(100);
 					savings[accountSelected].setBal(max(0, savings[accountSelected].getBal() + 100));
 					deposit = false, edit = true;
+					file << "Savings " << accountSelected << ": " << cur_bal << " --> " << checking[accountSelected].getBal() << endl;
 				}
 			}
 			else if (onHELOC == true) {
 				HELOC temp = heloc[accountSelected];
 				if (withdraw == true) {
+					double cur_bal = heloc[accountSelected].getLoan();
 					str = temp.Transaction(-100);
 					heloc[accountSelected].setLoan(max(0, heloc[accountSelected].getLoan() - 100));
 					withdraw = false, edit = true;
+					file << "HELOC " << accountSelected << ": " << cur_bal << " --> " << heloc[accountSelected].getBal() << endl;
 				}
 				else {
+					double cur_bal = heloc[accountSelected].getLoan();
 					str = temp.Transaction(100);
 					heloc[accountSelected].setLoan(max(0, heloc[accountSelected].getLoan() + 100));
 					deposit = false, edit = true;
+					file << "HELOC " << accountSelected << ": " << cur_bal << " --> " << heloc[accountSelected].getBal() << endl;
 				}
 			}
 			accountSelected = -1;
