@@ -7,9 +7,10 @@ private:
 	int withdraws = 0, months = 0, maxWithdraw = 0;
 public:
 	Savings();
-	//~Savings();
-	//void setBal(double);
 	void Interest();
+		double getBal() {
+		return bal;
+	}
 	string fixDouble(string);
 	string Transaction(double) final;
 } Savings;
