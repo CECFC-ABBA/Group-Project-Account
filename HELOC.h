@@ -57,6 +57,7 @@
 
 		void setEquity(double);
 		void setLoan(double);
+		string fixDouble(string);
 		void setYears(double);
 		void setCredit(double);
 		string fixDouble(string);
