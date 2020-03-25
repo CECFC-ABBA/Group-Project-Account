@@ -15,9 +15,9 @@ int accountSelected = -1, numAccts = -1;
 vector<Checking> checking;
 vector<Savings> savings;
 vector<HELOC> heloc;
-ofstream file;
+ofstream file("Log.txt");
 main() {
-	file.open("Log.txt");
+	//file.open("Log.txt");
 	ErrorFunction();
 	Window window;
 	POINT pos;
