@@ -19,6 +19,7 @@ vector<HELOC> heloc;
 main() {
 	ofstream file("Log.txt", ios::out);
 	//will this work before the window is created? if (!file.is_open) cout << "file not open." << endl;
+	file << "Transaction History:" << endl; //see where error is in writing
 	ErrorFunction();
 	Window window;
 	POINT pos;
