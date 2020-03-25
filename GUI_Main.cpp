@@ -15,9 +15,10 @@ int accountSelected = -1, numAccts = -1;
 vector<Checking> checking;
 vector<Savings> savings;
 vector<HELOC> heloc;
-ofstream file("Log.txt");
+
 main() {
-	//file.open("Log.txt");
+	ofstream file("Log.txt", ios::out);
+	//will this work before the window is created? if (!file.is_open) cout << "file not open." << endl;
 	ErrorFunction();
 	Window window;
 	POINT pos;
