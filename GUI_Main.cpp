@@ -3,6 +3,7 @@
 #include "Checking.h"
 #include "Savings.h"
 #include <vector>
+#include <iostream>
 #include <sstream>
 #include <string>
 #include <fstream>
